@@ -142,7 +142,7 @@ body{font-family:'DM Sans',sans-serif;background:#edf1f9;color:var(--text);min-h
 .nav-divider{height:1px;background:var(--border);margin:8px 12px}
 
 /* ── MAIN ── */
-.main{flex:1;padding:24px;overflow-y:auto;min-height:calc(100vh - 56px)}
+.main{flex:1;padding:24px;overflow-y:auto;min-height:calc(100vh - 56px);display:block!important}
 
 /* ── BACKEND CONFIG BANNER ── */
 .config-banner{
@@ -2409,9 +2409,17 @@ function addUser() {
 
 // ── NAVIGATION ────────────────────────────────────────────────
 function showPage(id) {
+  console.log('showPage called:', id);
   document.querySelectorAll('[id^="page-"]').forEach(p => p.classList.add('hidden'));
   const el = document.getElementById('page-' + id);
-  if(el) el.classList.remove('hidden');
+  console.log('page element found:', !!el, el ? el.children.length + ' children' : 'NULL');
+  if(el) {
+    el.classList.remove('hidden');
+    // Force visibility
+    el.style.display = 'block';
+    el.style.visibility = 'visible';
+    el.style.opacity = '1';
+  }
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   const nav = document.getElementById('nav-' + id) || document.querySelector('.nav-item[onclick*="' + id + '"]');
   if(nav) nav.classList.add('active');
