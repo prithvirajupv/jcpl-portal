@@ -1006,17 +1006,68 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
       </div>
 
       <div id="page-f05" class="hidden" style="display:none">
-        <h1 style="padding:40px;color:#1B3A6B;">FIN-05 Payment Put-Up</h1>
-        <p style="padding:0 40px;">This is a test. If you can see this, the page routing works.</p>
-        <div style="padding:40px;">
-          <div class="form-card"><div class="form-card-body">
-            <div class="field"><label>Vendor Name</label><input type="text" id="f05_vendor" placeholder="Vendor name"/></div>
-            <div class="field"><label>Invoice No.</label><input type="text" id="f05_inv" placeholder="Invoice number"/></div>
-            <div class="field"><label>Amount</label><input type="number" id="f05_amount" placeholder="0.00"/></div>
-          </div></div>
-          <div class="btn-row">
-            <button class="btn btn-primary" onclick="submitFormData('FIN-05','Payment Put-Up','f06')">Submit</button>
+        <div class="form-header"><div class="form-header-inner">
+          <div class="fh-left"><div class="fh-title">Payment Put-Up / Bill Processing Note</div><div class="fh-sub">Step 5 &middot; Accounts &middot; Three-way match required</div></div>
+          <div class="fh-right"><div class="fh-no-label">Form No.</div><div class="fh-no">JCPL-FIN-05</div><div class="fh-rev">Rev 00 &middot; 2025</div></div>
+        </div></div>
+        <div class="section-head">Invoice &amp; Payment Details</div>
+        <div class="form-card"><div class="form-card-body">
+          <div class="fgrid fg4">
+            <div class="field"><label>Vendor Name</label><input type="text" id="f05_vendor"/></div>
+            <div class="field"><label>Vendor GSTIN</label><input type="text" id="f05_gstin"/></div>
+            <div class="field"><label>Invoice No.</label><input type="text" id="f05_inv"/></div>
+            <div class="field"><label>Invoice Date</label><input type="date" id="f05_inv_date"/></div>
+            <div class="field"><label>PO Reference</label><input type="text" id="f05_po"/></div>
+            <div class="field"><label>GRN Reference</label><input type="text" id="f05_grn"/></div>
+            <div class="field"><label>Invoice Value (&#8377;)</label><input type="number" id="f05_inv_val" min="0" step="0.01" oninput="calcF05()"/></div>
+            <div class="field"><label>GST Amount (&#8377;)</label><input type="number" id="f05_gst" min="0" step="0.01" oninput="calcF05()"/></div>
+            <div class="field"><label>TDS Deducted (&#8377;)</label><input type="number" id="f05_tds" min="0" step="0.01" oninput="calcF05()"/></div>
+            <div class="field"><label>Advance Paid (&#8377;)</label><input type="number" id="f05_adv" min="0" step="0.01" oninput="calcF05()"/></div>
+            <div class="field"><label>Total Payable (&#8377;)</label><input type="text" id="f05_total" readonly class="computed"/></div>
+            <div class="field"><label>Net Balance Payable (&#8377;)</label><input type="text" id="f05_net" readonly class="computed" style="font-size:15px"/></div>
           </div>
+        </div></div>
+        <div class="section-head">Three-Way Matching Checklist</div>
+        <div class="form-card"><div class="form-card-body"><div class="checklist" id="f05_checks"></div></div></div>
+        <div class="section-head">Documents Attached</div>
+        <div class="form-card"><div class="form-card-body"><div class="checklist" id="f05_docs"></div></div></div>
+        <div class="section-head">Approval Chain</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px;">
+          <div id="f05_step1_box" style="border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);">
+            <div style="background:var(--navy);padding:11px 16px;text-align:center;"><span style="color:white;font-weight:700;font-size:12px;text-transform:uppercase;">Accounts Executive</span></div>
+            <div style="padding:16px;background:white;display:flex;flex-direction:column;gap:10px;">
+              <div class="field"><label>Name</label><input type="text" id="f05_s1_name"/></div>
+              <div class="field"><label>Date</label><input type="date" id="f05_s1_date"/></div>
+              <div class="field"><label>Remarks</label><input type="text" id="f05_s1_rem"/></div>
+            </div>
+            <div id="f05_s1_status" style="background:#fff8ec;border-top:1px solid var(--border);padding:9px 16px;text-align:center;font-size:12.5px;font-weight:600;color:var(--amber);">&#9203; Pending</div>
+            <div style="padding:12px 16px;background:white;border-top:1px solid var(--border);"><button class="btn btn-primary" style="width:100%;font-size:12px;padding:8px;" onclick="confirmFormStep('f05',1)">&#10004; Confirm</button></div>
+          </div>
+          <div id="f05_step2_box" style="border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);opacity:0.42;pointer-events:none;">
+            <div style="background:var(--navy);padding:11px 16px;text-align:center;"><span style="color:white;font-weight:700;font-size:12px;text-transform:uppercase;">Purchase Manager</span></div>
+            <div style="padding:16px;background:white;display:flex;flex-direction:column;gap:10px;">
+              <div class="field"><label>Name</label><input type="text" id="f05_s2_name"/></div>
+              <div class="field"><label>Date</label><input type="date" id="f05_s2_date"/></div>
+              <div class="field"><label>Remarks</label><input type="text" id="f05_s2_rem"/></div>
+            </div>
+            <div id="f05_s2_status" style="background:#fff8ec;border-top:1px solid var(--border);padding:9px 16px;text-align:center;font-size:12.5px;font-weight:600;color:var(--amber);">&#128274; Locked</div>
+            <div style="padding:12px 16px;background:white;border-top:1px solid var(--border);"><button class="btn btn-primary" style="width:100%;font-size:12px;padding:8px;" onclick="confirmFormStep('f05',2)">&#10004; Confirm</button></div>
+          </div>
+          <div id="f05_step3_box" style="border:1.5px solid var(--orange);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);opacity:0.42;pointer-events:none;">
+            <div style="background:var(--orange);padding:11px 16px;text-align:center;"><span style="color:white;font-weight:700;font-size:12px;text-transform:uppercase;">Finance Head / CFO</span></div>
+            <div style="padding:16px;background:white;display:flex;flex-direction:column;gap:10px;">
+              <div class="field"><label>Name</label><input type="text" id="f05_s3_name"/></div>
+              <div class="field"><label>Date</label><input type="date" id="f05_s3_date"/></div>
+              <div class="field"><label>Decision</label><select id="f05_s3_decision"><option value="">-- Select --</option><option>Approved</option><option>Hold</option><option>Rejected</option></select></div>
+            </div>
+            <div id="f05_s3_status" style="background:#fff8ec;border-top:1px solid var(--border);padding:9px 16px;text-align:center;font-size:12.5px;font-weight:600;color:var(--amber);">&#128274; Locked</div>
+            <div style="padding:12px 16px;background:white;border-top:1px solid var(--border);"><button class="btn btn-orange" style="width:100%;font-size:12px;padding:8px;" onclick="confirmFormStep('f05',3)">&#10004; CFO Approval</button></div>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary" id="f05SubmitBtn" onclick="submitFormData('FIN-05','Payment Put-Up','f06')" disabled>Submit &rarr; Route to MD for Approval</button>
+          <button class="btn btn-ghost" onclick="saveDraftLocal('f05')">&#128190; Save Draft</button>
+          <button class="btn btn-ghost" onclick="printForm('f05')">&#128424; Print</button>
         </div>
       </div>
 
