@@ -613,12 +613,12 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
                 <th style="background:#254d8f;">Qty Reqd.</th>
                 <th style="background:#254d8f;">Unit</th>
                 <th style="background:#1a5c38;">Qty in Stock</th>
-                <th style="background:#1a5c38;">Est. Unit Price (₹)</th>
-                <th style="background:#1a5c38;">Est. Total (₹)</th>
+                <th style="background:#1a5c38;">Est. Unit Price (&#8377;)</th>
+                <th style="background:#1a5c38;">Est. Total (&#8377;)</th>
               </tr>
             </thead>
             <tbody id="f01_body"></tbody>
-            <tfoot><tr><td colspan="8" style="text-align:right">Total Estimated Value (₹)</td><td class="mono" id="f01_total">0.00</td></tr></tfoot>
+            <tfoot><tr><td colspan="8" style="text-align:right">Total Estimated Value (&#8377;)</td><td class="mono" id="f01_total">0.00</td></tr></tfoot>
           </table></div>
           <button class="add-row-btn" onclick="addF01Row()">＋ Add Row</button>
         </div></div>
@@ -733,7 +733,7 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
             <div class="fgrid fg2">
               <div class="field"><label>Decision</label>
                 <select id="f01_mgmt_decision">
-                  <option value="">— Select —</option>
+                  <option value="">-- Select --</option>
                   <option value="Approved">✅ Approved</option>
                   <option value="Approved with Conditions">✅ Approved with Conditions</option>
                   <option value="Hold">⏸ Hold</option>
@@ -787,7 +787,7 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
                 <td><select id="f02_tc2" onchange="autoSelectVendor()"><option value="Yes">Yes</option><option value="No">No</option><option value="Partial">Partial</option></select></td>
                 <td><select id="f02_tc3" onchange="autoSelectVendor()"><option value="Yes">Yes</option><option value="No">No</option><option value="Partial">Partial</option></select></td>
                 <td><input type="text" id="f02_pref_tc" readonly style="background:var(--grey-light);font-weight:600;font-size:12px"/></td><td><input type="text"/></td></tr>
-              <tr><td style="font-weight:600;color:var(--navy)">Unit Price (₹)</td>
+              <tr><td style="font-weight:600;color:var(--navy)">Unit Price (&#8377;)</td>
                 <td><input type="number" id="f02_p1" min="0" step="0.01" oninput="autoSelectVendor()"/></td>
                 <td><input type="number" id="f02_p2" min="0" step="0.01" oninput="autoSelectVendor()"/></td>
                 <td><input type="number" id="f02_p3" min="0" step="0.01" oninput="autoSelectVendor()"/></td>
@@ -841,7 +841,7 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
             <div style="padding:16px;background:white;display:flex;flex-direction:column;gap:10px;">
               <div class="field"><label>Name</label><input type="text" id="f02_s3_name" placeholder="Full name"/></div>
               <div class="field"><label>Date</label><input type="date" id="f02_s3_date"/></div>
-              <div class="field"><label>Decision</label><select id="f02_s3_decision"><option value="">— Select —</option><option>Approved</option><option>Approved with Conditions</option><option>Hold</option><option>Rejected</option></select></div>
+              <div class="field"><label>Decision</label><select id="f02_s3_decision"><option value="">-- Select --</option><option>Approved</option><option>Approved with Conditions</option><option>Hold</option><option>Rejected</option></select></div>
             </div>
             <div id="f02_s3_status" style="background:#fff8ec;border-top:1px solid var(--border);padding:9px 16px;text-align:center;font-size:12.5px;font-weight:600;color:var(--amber);">🔒 Locked</div>
             <div style="padding:12px 16px;background:white;border-top:1px solid var(--border);">
@@ -880,12 +880,12 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
         <div class="section-head">PO Summary &amp; Totals</div>
         <div class="form-card"><div class="form-card-body">
           <div class="tbl-wrap"><table class="form-table" id="f03_table">
-            <thead><tr><th>#</th><th>Description</th><th>Part No.</th><th>Qty</th><th>Unit Price (₹)</th><th>GST %</th><th>Total (₹)</th></tr></thead>
+            <thead><tr><th>#</th><th>Description</th><th>Part No.</th><th>Qty</th><th>Unit Price (&#8377;)</th><th>GST %</th><th>Total (&#8377;)</th></tr></thead>
             <tbody id="f03_body"></tbody>
             <tfoot>
-              <tr><td colspan="6" style="text-align:right">Sub-Total (₹)</td><td class="mono" id="f03_sub">0.00</td></tr>
-              <tr><td colspan="6" style="text-align:right">GST (₹)</td><td class="mono" id="f03_gst">0.00</td></tr>
-              <tr class="grand-row"><td colspan="6" style="text-align:right;color:white">Grand Total (₹)</td><td class="mono" id="f03_grand" style="color:white">0.00</td></tr>
+              <tr><td colspan="6" style="text-align:right">Sub-Total (&#8377;)</td><td class="mono" id="f03_sub">0.00</td></tr>
+              <tr><td colspan="6" style="text-align:right">GST (&#8377;)</td><td class="mono" id="f03_gst">0.00</td></tr>
+              <tr class="grand-row"><td colspan="6" style="text-align:right;color:white">Grand Total (&#8377;)</td><td class="mono" id="f03_grand" style="color:white">0.00</td></tr>
             </tfoot>
           </table></div>
           <button class="add-row-btn" onclick="addF03Row()">＋ Add Row</button>
@@ -917,7 +917,7 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
             <div style="padding:16px;background:white;display:flex;flex-direction:column;gap:10px;">
               <div class="field"><label>Name</label><input type="text" id="f03_s3_name"/></div>
               <div class="field"><label>Date</label><input type="date" id="f03_s3_date"/></div>
-              <div class="field"><label>Decision</label><select id="f03_s3_decision"><option value="">— Select —</option><option>Approved</option><option>Hold</option><option>Rejected</option></select></div>
+              <div class="field"><label>Decision</label><select id="f03_s3_decision"><option value="">-- Select --</option><option>Approved</option><option>Hold</option><option>Rejected</option></select></div>
             </div>
             <div id="f03_s3_status" style="background:#fff8ec;border-top:1px solid var(--border);padding:9px 16px;text-align:center;font-size:12.5px;font-weight:600;color:var(--amber);">🔒 Locked</div>
             <div style="padding:12px 16px;background:white;border-top:1px solid var(--border);"><button class="btn btn-orange" style="width:100%;font-size:12px;padding:8px;" onclick="confirmFormStep('f03',3)">✔ MD Approval</button></div>
@@ -1023,26 +1023,26 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
             <div class="field"><label>GRN Reference</label><input type="text" id="f05_grn"/></div>
             <div class="field"><label>Payment Mode</label><select id="f05_pay_mode"><option>NEFT</option><option>RTGS</option><option>Cheque</option><option>UPI</option></select></div>
             <div class="field"><label>Payment Due Date</label><input type="date" id="f05_due_date"/></div>
-            <div class="field"><label>Invoice Value (₹)</label><input type="number" id="f05_inv_val" min="0" step="0.01" oninput="calcF05()"/></div>
-            <div class="field"><label>GST Amount (₹)</label><input type="number" id="f05_gst" min="0" step="0.01" oninput="calcF05()"/></div>
-            <div class="field"><label>TDS Deducted (₹)</label><input type="number" id="f05_tds" min="0" step="0.01" oninput="calcF05()"/></div>
-            <div class="field"><label>Advance Paid (₹)</label><input type="number" id="f05_adv" min="0" step="0.01" oninput="calcF05()"/></div>
-            <div class="field"><label>Total Payable (₹)</label><input type="text" id="f05_total" readonly class="computed"/></div>
-            <div class="field"><label>Net Balance Payable (₹)</label><input type="text" id="f05_net" readonly class="computed" style="font-size:15px"/></div>
+            <div class="field"><label>Invoice Value (&#8377;)</label><input type="number" id="f05_inv_val" min="0" step="0.01" oninput="calcF05()"/></div>
+            <div class="field"><label>GST Amount (&#8377;)</label><input type="number" id="f05_gst" min="0" step="0.01" oninput="calcF05()"/></div>
+            <div class="field"><label>TDS Deducted (&#8377;)</label><input type="number" id="f05_tds" min="0" step="0.01" oninput="calcF05()"/></div>
+            <div class="field"><label>Advance Paid (&#8377;)</label><input type="number" id="f05_adv" min="0" step="0.01" oninput="calcF05()"/></div>
+            <div class="field"><label>Total Payable (&#8377;)</label><input type="text" id="f05_total" readonly class="computed"/></div>
+            <div class="field"><label>Net Balance Payable (&#8377;)</label><input type="text" id="f05_net" readonly class="computed" style="font-size:15px"/></div>
           </div>
         </div></div>
 
         <div class="section-head">B. Three-Way Matching Checklist</div>
         <div class="form-card"><div class="form-card-body">
           <div class="checklist">
-            <div class="check-item"><div class="check-item-label">1. PO — Invoice: Item description matches</div><select><option value="">— Select —</option><option value="Y">✓ Yes</option><option value="N">✗ No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">2. PO — Invoice: Quantity matches</div><select><option value="">— Select —</option><option value="Y">✓ Yes</option><option value="N">✗ No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">3. PO — Invoice: Unit rate / price matches</div><select><option value="">— Select —</option><option value="Y">✓ Yes</option><option value="N">✗ No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">4. GRN — Invoice: Qty received matches invoice qty</div><select><option value="">— Select —</option><option value="Y">✓ Yes</option><option value="N">✗ No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">5. Material fully accepted (no pending rejections)</div><select><option value="">— Select —</option><option value="Y">✓ Yes</option><option value="N">✗ No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">6. Invoice is original and stamped by vendor</div><select><option value="">— Select —</option><option value="Y">✓ Yes</option><option value="N">✗ No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">7. GST compliant invoice (IRN / GSTIN present)</div><select><option value="">— Select —</option><option value="Y">✓ Yes</option><option value="N">✗ No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">8. TDS applicable rate verified and computed</div><select><option value="">— Select —</option><option value="Y">✓ Yes</option><option value="N">✗ No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">9. Previous advance / outstanding adjusted</div><select><option value="">— Select —</option><option value="Y">✓ Yes</option><option value="N">✗ No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">10. Statutory deductions (if applicable) verified</div><select><option value="">— Select —</option><option value="Y">✓ Yes</option><option value="N">✗ No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div>
+            <div class="check-item"><div class="check-item-label">1. PO — Invoice: Item description matches</div><select><option value="">-- Select --</option><option value="Y">&#10003; Yes</option><option value="N">&#10007; No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">2. PO — Invoice: Quantity matches</div><select><option value="">-- Select --</option><option value="Y">&#10003; Yes</option><option value="N">&#10007; No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">3. PO — Invoice: Unit rate / price matches</div><select><option value="">-- Select --</option><option value="Y">&#10003; Yes</option><option value="N">&#10007; No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">4. GRN — Invoice: Qty received matches invoice qty</div><select><option value="">-- Select --</option><option value="Y">&#10003; Yes</option><option value="N">&#10007; No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">5. Material fully accepted (no pending rejections)</div><select><option value="">-- Select --</option><option value="Y">&#10003; Yes</option><option value="N">&#10007; No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">6. Invoice is original and stamped by vendor</div><select><option value="">-- Select --</option><option value="Y">&#10003; Yes</option><option value="N">&#10007; No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">7. GST compliant invoice (IRN / GSTIN present)</div><select><option value="">-- Select --</option><option value="Y">&#10003; Yes</option><option value="N">&#10007; No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">8. TDS applicable rate verified and computed</div><select><option value="">-- Select --</option><option value="Y">&#10003; Yes</option><option value="N">&#10007; No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">9. Previous advance / outstanding adjusted</div><select><option value="">-- Select --</option><option value="Y">&#10003; Yes</option><option value="N">&#10007; No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">10. Statutory deductions (if applicable) verified</div><select><option value="">-- Select --</option><option value="Y">&#10003; Yes</option><option value="N">&#10007; No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div>
           </div>
         </div></div>
 
         <div class="section-head">C. Documents Attached</div>
         <div class="form-card"><div class="form-card-body">
           <div class="checklist">
-            <div class="check-item"><div class="check-item-label">1. Vendor Invoice — Original</div><select><option value="">— Select —</option><option value="Y">✓ Yes</option><option value="N">✗ No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">2. Purchase Order copy</div><select><option value="">— Select —</option><option value="Y">✓ Yes</option><option value="N">✗ No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">3. GRN copy</div><select><option value="">— Select —</option><option value="Y">✓ Yes</option><option value="N">✗ No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">4. Delivery Challan / LR copy</div><select><option value="">— Select —</option><option value="Y">✓ Yes</option><option value="N">✗ No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">5. Inspection / QC Report</div><select><option value="">— Select —</option><option value="Y">✓ Yes</option><option value="N">✗ No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">6. Advance Payment proof (if applicable)</div><select><option value="">— Select —</option><option value="Y">✓ Yes</option><option value="N">✗ No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">7. TDS Computation Sheet</div><select><option value="">— Select —</option><option value="Y">✓ Yes</option><option value="N">✗ No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div>
+            <div class="check-item"><div class="check-item-label">1. Vendor Invoice — Original</div><select><option value="">-- Select --</option><option value="Y">&#10003; Yes</option><option value="N">&#10007; No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">2. Purchase Order copy</div><select><option value="">-- Select --</option><option value="Y">&#10003; Yes</option><option value="N">&#10007; No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">3. GRN copy</div><select><option value="">-- Select --</option><option value="Y">&#10003; Yes</option><option value="N">&#10007; No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">4. Delivery Challan / LR copy</div><select><option value="">-- Select --</option><option value="Y">&#10003; Yes</option><option value="N">&#10007; No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">5. Inspection / QC Report</div><select><option value="">-- Select --</option><option value="Y">&#10003; Yes</option><option value="N">&#10007; No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">6. Advance Payment proof (if applicable)</div><select><option value="">-- Select --</option><option value="Y">&#10003; Yes</option><option value="N">&#10007; No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div><div class="check-item"><div class="check-item-label">7. TDS Computation Sheet</div><select><option value="">-- Select --</option><option value="Y">&#10003; Yes</option><option value="N">&#10007; No</option><option value="NA">N/A</option></select><input type="text" placeholder="Remarks..."/></div>
           </div>
         </div></div>
 
@@ -1073,7 +1073,7 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
             <div style="padding:16px;background:white;display:flex;flex-direction:column;gap:10px;">
               <div class="field"><label>Name</label><input type="text" id="f05_s3_name"/></div>
               <div class="field"><label>Date</label><input type="date" id="f05_s3_date"/></div>
-              <div class="field"><label>Decision</label><select id="f05_s3_decision"><option value="">— Select —</option><option>Approved</option><option>Hold</option><option>Rejected</option></select></div>
+              <div class="field"><label>Decision</label><select id="f05_s3_decision"><option value="">-- Select --</option><option>Approved</option><option>Hold</option><option>Rejected</option></select></div>
             </div>
             <div id="f05_s3_status" style="background:#fff8ec;border-top:1px solid var(--border);padding:9px 16px;text-align:center;font-size:12.5px;font-weight:600;color:var(--amber);">🔒 Locked</div>
             <div style="padding:12px 16px;background:white;border-top:1px solid var(--border);"><button class="btn btn-orange" style="width:100%;font-size:12px;padding:8px;" onclick="confirmFormStep('f05',3)">✔ Confirm Sign-off</button></div>
@@ -1105,8 +1105,8 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
             <div class="field"><label>PO / Project Reference</label><input type="text" id="f06_project"/></div>
           </div>
           <div style="background:var(--green-light);border:2px solid #b2dfcc;border-radius:var(--r-sm);padding:14px 18px;margin-top:14px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
-            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--green);min-width:160px;">Net Amount Payable (₹)</div>
-            <input type="text" id="f06_amount" placeholder="₹ 0.00" style="border:none;background:transparent;font-size:20px;font-weight:700;color:var(--navy);font-family:'DM Serif Display',serif;flex:1;outline:none;min-width:120px"/>
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--green);min-width:160px;">Net Amount Payable (&#8377;)</div>
+            <input type="text" id="f06_amount" placeholder="&#8377; 0.00" style="border:none;background:transparent;font-size:20px;font-weight:700;color:var(--navy);font-family:'DM Serif Display',serif;flex:1;outline:none;min-width:120px"/>
             <input type="text" id="f06_words" placeholder="In words: Rupees ..." style="border:1px solid var(--border);border-radius:5px;padding:8px 12px;font-size:12.5px;flex:2;font-family:'DM Sans',sans-serif;outline:none;min-width:200px"/>
           </div>
         </div></div>
@@ -1159,12 +1159,12 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
             <div class="field"><label>Voucher Date</label><input type="date"/></div>
             <div class="field"><label>Payment Approval Ref.</label><input type="text" placeholder="FIN-06 Record ID"/></div>
             <div class="field"><label>Payee (Vendor) Name</label><input type="text"/></div>
-            <div class="field"><label>Gross Amount (₹)</label><input type="number" id="f07_gross" min="0" step="0.01" oninput="calcF07()"/></div>
-            <div class="field"><label>TDS Deducted (₹)</label><input type="number" id="f07_tds" min="0" step="0.01" oninput="calcF07()"/></div>
+            <div class="field"><label>Gross Amount (&#8377;)</label><input type="number" id="f07_gross" min="0" step="0.01" oninput="calcF07()"/></div>
+            <div class="field"><label>TDS Deducted (&#8377;)</label><input type="number" id="f07_tds" min="0" step="0.01" oninput="calcF07()"/></div>
             <div class="field"><label>Payment Mode</label><select><option>NEFT</option><option>RTGS</option><option>Cheque</option></select></div>
             <div class="field"><label>UTR / Cheque No.</label><input type="text" id="f07_utr"/></div>
             <div class="field full" style="background:var(--green-light);border:2px solid #b2dfcc;border-radius:var(--r-sm);padding:12px 16px;display:flex;align-items:center;gap:14px;">
-              <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--green);min-width:160px;">Net Amount Paid (₹)</div>
+              <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--green);min-width:160px;">Net Amount Paid (&#8377;)</div>
               <input type="text" id="f07_net" readonly style="border:none;background:transparent;font-size:20px;font-weight:700;color:var(--navy);font-family:'DM Serif Display',serif;flex:1;outline:none;" placeholder="0.00"/>
             </div>
             <div class="field"><label>Bank Paid From</label><input type="text"/></div>
@@ -1177,7 +1177,7 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
         <div class="section-head">B. Post-Payment Checklist</div>
         <div class="form-card"><div class="form-card-body">
           <div class="checklist">
-            <div class="check-item"><div class="check-item-label">1. Payment released through banking portal</div><select><option value="">— Select —</option><option value="Y">✓ Done</option><option value="N">✗ Pending</option><option value="NA">N/A</option></select><input type="text" placeholder="Done by / Time..."/></div><div class="check-item"><div class="check-item-label">2. NEFT / RTGS UTR number noted and recorded</div><select><option value="">— Select —</option><option value="Y">✓ Done</option><option value="N">✗ Pending</option><option value="NA">N/A</option></select><input type="text" placeholder="Done by / Time..."/></div><div class="check-item"><div class="check-item-label">3. TDS challan / liability entry updated</div><select><option value="">— Select —</option><option value="Y">✓ Done</option><option value="N">✗ Pending</option><option value="NA">N/A</option></select><input type="text" placeholder="Done by / Time..."/></div><div class="check-item"><div class="check-item-label">4. Vendor ledger updated in ERP / Tally</div><select><option value="">— Select —</option><option value="Y">✓ Done</option><option value="N">✗ Pending</option><option value="NA">N/A</option></select><input type="text" placeholder="Done by / Time..."/></div><div class="check-item"><div class="check-item-label">5. Accounts payable register updated</div><select><option value="">— Select —</option><option value="Y">✓ Done</option><option value="N">✗ Pending</option><option value="NA">N/A</option></select><input type="text" placeholder="Done by / Time..."/></div><div class="check-item"><div class="check-item-label">6. Invoice stamped PAID with date and ref. no.</div><select><option value="">— Select —</option><option value="Y">✓ Done</option><option value="N">✗ Pending</option><option value="NA">N/A</option></select><input type="text" placeholder="Done by / Time..."/></div><div class="check-item"><div class="check-item-label">7. Advance adjustment entry passed (if applicable)</div><select><option value="">— Select —</option><option value="Y">✓ Done</option><option value="N">✗ Pending</option><option value="NA">N/A</option></select><input type="text" placeholder="Done by / Time..."/></div><div class="check-item"><div class="check-item-label">8. Proof of payment filed physically and digitally</div><select><option value="">— Select —</option><option value="Y">✓ Done</option><option value="N">✗ Pending</option><option value="NA">N/A</option></select><input type="text" placeholder="Done by / Time..."/></div>
+            <div class="check-item"><div class="check-item-label">1. Payment released through banking portal</div><select><option value="">-- Select --</option><option value="Y">&#10003; Done</option><option value="N">&#10007; Pending</option><option value="NA">N/A</option></select><input type="text" placeholder="Done by / Time..."/></div><div class="check-item"><div class="check-item-label">2. NEFT / RTGS UTR number noted and recorded</div><select><option value="">-- Select --</option><option value="Y">&#10003; Done</option><option value="N">&#10007; Pending</option><option value="NA">N/A</option></select><input type="text" placeholder="Done by / Time..."/></div><div class="check-item"><div class="check-item-label">3. TDS challan / liability entry updated</div><select><option value="">-- Select --</option><option value="Y">&#10003; Done</option><option value="N">&#10007; Pending</option><option value="NA">N/A</option></select><input type="text" placeholder="Done by / Time..."/></div><div class="check-item"><div class="check-item-label">4. Vendor ledger updated in ERP / Tally</div><select><option value="">-- Select --</option><option value="Y">&#10003; Done</option><option value="N">&#10007; Pending</option><option value="NA">N/A</option></select><input type="text" placeholder="Done by / Time..."/></div><div class="check-item"><div class="check-item-label">5. Accounts payable register updated</div><select><option value="">-- Select --</option><option value="Y">&#10003; Done</option><option value="N">&#10007; Pending</option><option value="NA">N/A</option></select><input type="text" placeholder="Done by / Time..."/></div><div class="check-item"><div class="check-item-label">6. Invoice stamped PAID with date and ref. no.</div><select><option value="">-- Select --</option><option value="Y">&#10003; Done</option><option value="N">&#10007; Pending</option><option value="NA">N/A</option></select><input type="text" placeholder="Done by / Time..."/></div><div class="check-item"><div class="check-item-label">7. Advance adjustment entry passed (if applicable)</div><select><option value="">-- Select --</option><option value="Y">&#10003; Done</option><option value="N">&#10007; Pending</option><option value="NA">N/A</option></select><input type="text" placeholder="Done by / Time..."/></div><div class="check-item"><div class="check-item-label">8. Proof of payment filed physically and digitally</div><select><option value="">-- Select --</option><option value="Y">&#10003; Done</option><option value="N">&#10007; Pending</option><option value="NA">N/A</option></select><input type="text" placeholder="Done by / Time..."/></div>
           </div>
         </div></div>
 
@@ -1208,7 +1208,7 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
             <div style="padding:16px;background:white;display:flex;flex-direction:column;gap:10px;">
               <div class="field"><label>Name</label><input type="text" id="f07_s3_name"/></div>
               <div class="field"><label>Date</label><input type="date" id="f07_s3_date"/></div>
-              <div class="field"><label>Decision</label><select id="f07_s3_decision"><option value="">— Select —</option><option>Approved</option><option>Hold</option><option>Rejected</option></select></div>
+              <div class="field"><label>Decision</label><select id="f07_s3_decision"><option value="">-- Select --</option><option>Approved</option><option>Hold</option><option>Rejected</option></select></div>
             </div>
             <div id="f07_s3_status" style="background:#fff8ec;border-top:1px solid var(--border);padding:9px 16px;text-align:center;font-size:12.5px;font-weight:600;color:var(--amber);">🔒 Locked</div>
             <div style="padding:12px 16px;background:white;border-top:1px solid var(--border);"><button class="btn btn-orange" style="width:100%;font-size:12px;padding:8px;" onclick="confirmFormStep('f07',3)">✔ Confirm Sign-off</button></div>
@@ -1236,7 +1236,7 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
 
         <div class="form-card"><div class="form-card-body">
           <div class="tbl-wrap"><table class="form-table" id="f08_table">
-            <thead><tr><th>Vch. No.</th><th>Date</th><th>Vendor Name</th><th>Invoice No.</th><th>PO Ref.</th><th>Gross (₹)</th><th>TDS (₹)</th><th>Net Paid (₹)</th><th>Mode / UTR</th><th>Approval Ref.</th><th>Remarks</th><th>✕</th></tr></thead>
+            <thead><tr><th>Vch. No.</th><th>Date</th><th>Vendor Name</th><th>Invoice No.</th><th>PO Ref.</th><th>Gross (&#8377;)</th><th>TDS (&#8377;)</th><th>Net Paid (&#8377;)</th><th>Mode / UTR</th><th>Approval Ref.</th><th>Remarks</th><th>✕</th></tr></thead>
             <tbody id="f08_body"></tbody>
             <tfoot><tr>
               <td colspan="5" style="text-align:right;font-weight:700;">Totals →</td>
@@ -1327,7 +1327,7 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
 
         <!-- Summary Cards -->
         <div class="dash-grid" style="margin-bottom:20px;">
-          <div class="stat-card c-navy"><div class="stat-icon">₹</div><div class="stat-val" id="rpt_total_spend">—</div><div class="stat-label">Total Spend This Month (₹)</div></div>
+          <div class="stat-card c-navy"><div class="stat-icon">₹</div><div class="stat-val" id="rpt_total_spend">—</div><div class="stat-label">Total Spend This Month (&#8377;)</div></div>
           <div class="stat-card c-green"><div class="stat-icon">✅</div><div class="stat-val" id="rpt_paid">—</div><div class="stat-label">Payments Released</div></div>
           <div class="stat-card c-orange"><div class="stat-icon">⏳</div><div class="stat-val" id="rpt_pending">—</div><div class="stat-label">Pending Approvals</div></div>
           <div class="stat-card c-amber"><div class="stat-icon">📋</div><div class="stat-val" id="rpt_indents">—</div><div class="stat-label">Indents Raised</div></div>
@@ -2876,7 +2876,7 @@ function buildChecklist(id, items) {
   el.innerHTML = items.map((item,i) => `
     <div class="check-item">
       <div class="check-item-label">${i+1}. ${item}</div>
-      <select><option value="">— Select —</option><option value="Y">✓ Yes</option><option value="N">✗ No</option><option value="NA">N/A</option></select>
+      <select><option value="">-- Select --</option><option value="Y">&#10003; Yes</option><option value="N">&#10007; No</option><option value="NA">N/A</option></select>
       <input type="text" placeholder="Remarks..."/>
     </div>`).join('');
 }
