@@ -2409,19 +2409,23 @@ function addUser() {
 
 // ── NAVIGATION ────────────────────────────────────────────────
 function showPage(id) {
-  document.querySelectorAll('[id^="page-"]').forEach(p => {
-    p.classList.add('hidden');
-    p.style.display = 'none';
-  });
-  const el = document.getElementById('page-' + id);
-  if(el) {
-    el.classList.remove('hidden');
-    el.style.display = 'block';
-  }
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  const nav = document.getElementById('nav-' + id) || document.querySelector('.nav-item[onclick*="' + id + '"]');
-  if(nav) nav.classList.add('active');
-  window.scrollTo(0,0);
+  try {
+    document.querySelectorAll('[id^="page-"]').forEach(p => {
+      p.setAttribute('style', 'display:none !important');
+      p.classList.add('hidden');
+    });
+    const el = document.getElementById('page-' + id);
+    if(el) {
+      el.setAttribute('style', 'display:block !important');
+      el.classList.remove('hidden');
+    }
+  } catch(err) { console.error('showPage error:', err); }
+  try {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    const nav = document.getElementById('nav-' + id) || document.querySelector('.nav-item[onclick*="' + id + '"]');
+    if(nav) nav.classList.add('active');
+    window.scrollTo(0,0);
+  } catch(e) {}
   if(id==='dashboard') loadDashboard();
   if(id==='records')   loadRecords();
   if(id==='audit')     loadAuditLog();
