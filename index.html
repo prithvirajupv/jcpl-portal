@@ -411,7 +411,7 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
       </button>
       <div class="login-err" id="loginErr"></div>
       <div class="login-hint" id="demoHint">
-        <strong>JCPL Staff — use your assigned credentials.</strong><br>
+        <strong>JCPL Staff - use your assigned credentials.</strong><br>
         Directors: psr@jcpl.in · pr@jcpl.in · pv@jcpl.in<br>
         Contact Director / IT Admin if you need access.
       </div>
@@ -434,8 +434,8 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
         <div id="notifBell" class="hidden" style="position:absolute;top:-4px;right:-4px;background:var(--red);color:white;border-radius:50%;width:18px;height:18px;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;border:2px solid var(--navy);">0</div>
       </div>
       <div class="user-chip">
-        <div class="user-avatar" id="userAvatar">—</div>
-        <div><div class="user-name" id="userName">—</div><div class="user-role" id="userRole">—</div></div>
+        <div class="user-avatar" id="userAvatar">-</div>
+        <div><div class="user-name" id="userName">-</div><div class="user-role" id="userRole">-</div></div>
       </div>
       <button class="btn-logout" onclick="doLogout()">Sign Out</button>
     </div>
@@ -521,14 +521,14 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
       <!-- ═══════════ DASHBOARD ═══════════ -->
       <div id="page-dashboard">
         <h1 class="page-title">Dashboard</h1>
-        <p class="page-sub">Welcome back, <span id="dashWelcomeName">—</span>. Here's what needs your attention.</p>
+        <p class="page-sub">Welcome back, <span id="dashWelcomeName">-</span>. Here's what needs your attention.</p>
 
         <div class="dash-grid">
-          <div class="stat-card c-navy"><div class="stat-icon">📋</div><div class="stat-val" id="dTotal">—</div><div class="stat-label">Total Records</div></div>
-          <div class="stat-card c-orange"><div class="stat-icon">⏳</div><div class="stat-val" id="dPending">—</div><div class="stat-label">My Pending Actions</div><span class="action-link" onclick="showPage('records')">View →</span></div>
-          <div class="stat-card c-green"><div class="stat-icon">✅</div><div class="stat-val" id="dApproved">—</div><div class="stat-label">Approved</div></div>
-          <div class="stat-card c-red"><div class="stat-icon">✗</div><div class="stat-val" id="dRejected">—</div><div class="stat-label">Rejected / On Hold</div></div>
-          <div class="stat-card c-amber"><div class="stat-icon">💾</div><div class="stat-val" id="dMode">—</div><div class="stat-label">Storage Mode</div></div>
+          <div class="stat-card c-navy"><div class="stat-icon">📋</div><div class="stat-val" id="dTotal">-</div><div class="stat-label">Total Records</div></div>
+          <div class="stat-card c-orange"><div class="stat-icon">⏳</div><div class="stat-val" id="dPending">-</div><div class="stat-label">My Pending Actions</div><span class="action-link" onclick="showPage('records')">View →</span></div>
+          <div class="stat-card c-green"><div class="stat-icon">✅</div><div class="stat-val" id="dApproved">-</div><div class="stat-label">Approved</div></div>
+          <div class="stat-card c-red"><div class="stat-icon">✗</div><div class="stat-val" id="dRejected">-</div><div class="stat-label">Rejected / On Hold</div></div>
+          <div class="stat-card c-amber"><div class="stat-icon">💾</div><div class="stat-val" id="dMode">-</div><div class="stat-label">Storage Mode</div></div>
         </div>
 
         <!-- Pipeline -->
@@ -544,7 +544,7 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
             <div style="background:var(--orange);padding:12px 18px;display:flex;align-items:center;justify-content:space-between;">
               <div style="display:flex;align-items:center;gap:8px;">
                 <span style="font-size:16px;">🔔</span>
-                <h3 style="color:white;font-size:13px;font-weight:700;">Action Required — You Have Pending Sign-offs</h3>
+                <h3 style="color:white;font-size:13px;font-weight:700;">Action Required - You Have Pending Sign-offs</h3>
               </div>
               <button onclick="dismissNotifs()" style="background:rgba(255,255,255,.2);border:none;color:white;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:'DM Sans',sans-serif;">Dismiss</button>
             </div>
@@ -573,7 +573,7 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
         <div class="form-card"><div class="form-card-body">
           <div class="fgrid fg4">
 
-            <!-- Row 1: Work Order details — TOP -->
+            <!-- Row 1: Work Order details - TOP -->
             <div class="field"><label>Work Order No.</label><input type="text" id="f01_wo_no" placeholder="e.g. WO-M-25-001"/></div>
             <div class="field"><label>Work Order Date</label><input type="date" id="f01_wo_date"/></div>
             <div class="field"><label>Indent No.</label><input type="text" id="f01_indent_no" readonly style="background:var(--grey-light)"/></div>
@@ -602,8 +602,8 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
               <!-- Group header row -->
               <tr>
                 <th rowspan="2" style="vertical-align:middle;text-align:center;">#</th>
-                <th colspan="5" style="text-align:center;background:#254d8f;border-bottom:2px solid #4a7fc1;">— To be filled by Indenter —</th>
-                <th colspan="3" style="text-align:center;background:#1a5c38;border-bottom:2px solid #2e9e61;">— To be filled by Stores —</th>
+                <th colspan="5" style="text-align:center;background:#254d8f;border-bottom:2px solid #4a7fc1;">- To be filled by Indenter -</th>
+                <th colspan="3" style="text-align:center;background:#1a5c38;border-bottom:2px solid #2e9e61;">- To be filled by Stores -</th>
               </tr>
               <!-- Column header row -->
               <tr>
@@ -655,7 +655,7 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
 
         </div></div>
 
-        <div class="section-head">D. Approval Chain <span style="font-size:10px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-muted);">— Sign-offs unlock in sequence. Complete each card before the next activates.</span></div>
+        <div class="section-head">D. Approval Chain <span style="font-size:10px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-muted);">- Sign-offs unlock in sequence. Complete each card before the next activates.</span></div>
 
         <!-- 3-COLUMN CARD ROW: INDENTER | SECTION HEAD | STORES VERIFICATION -->
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px;">
@@ -716,8 +716,8 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
 
         </div>
 
-        <!-- STEP 4: MANAGEMENT APPROVAL — full width, orange, final gate -->
-        <div class="section-head">E. Management Approval <span style="font-size:10px;font-weight:400;color:var(--text-muted);text-transform:none;letter-spacing:0;">— Final Gate</span></div>
+        <!-- STEP 4: MANAGEMENT APPROVAL - full width, orange, final gate -->
+        <div class="section-head">E. Management Approval <span style="font-size:10px;font-weight:400;color:var(--text-muted);text-transform:none;letter-spacing:0;">- Final Gate</span></div>
         <div id="mgmt_card" style="border:1.5px solid var(--orange);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);opacity:0.42;pointer-events:none;transition:opacity .3s;margin-bottom:16px;">
           <div style="background:var(--orange);padding:11px 18px;text-align:center;">
             <span style="color:white;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;">Management Approval</span>
@@ -743,7 +743,7 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
               <div class="field"><label>Conditions / Notes</label><input type="text" id="f01_mgmt_conditions" placeholder="If any conditions apply..."/></div>
             </div>
           </div>
-          <div id="f01_mgmt_status" style="background:#fff8ec;border-top:1px solid var(--border);padding:9px 16px;text-align:center;font-size:12.5px;font-weight:600;color:var(--amber);">🔒 Locked — awaiting Steps 1, 2 &amp; 3</div>
+          <div id="f01_mgmt_status" style="background:#fff8ec;border-top:1px solid var(--border);padding:9px 16px;text-align:center;font-size:12.5px;font-weight:600;color:var(--amber);">🔒 Locked - awaiting Steps 1, 2 &amp; 3</div>
           <div style="padding:12px 18px;background:white;border-top:1px solid var(--border);">
             <button class="btn btn-orange" style="font-size:12px;padding:8px 20px;" onclick="confirmStep(4)">✔ Confirm Management Approval</button>
           </div>
@@ -755,7 +755,7 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
         </div>
       </div>
 
-      <!-- FORMS 02–08: abbreviated for compactness, same pattern -->
+      <!-- FORMS 02-08: abbreviated for compactness, same pattern -->
       <div id="page-f02" class="hidden">
         <div class="form-header"><div class="form-header-inner">
           <div class="fh-left"><div class="fh-title">Quotation Comparison &amp; Vendor Selection</div><div class="fh-sub">Step 2 · Purchase Cell · Min 3 quotes required</div></div>
@@ -797,14 +797,14 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
             </tbody>
           </table></div>
           <div class="alert alert-success" style="margin-top:10px;line-height:1.9;">
-            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--green);margin-bottom:6px;">L1 Analysis — Technically Compliant Vendors Only</div>
-            <div id="f02_auto_msg" style="font-size:12.5px;">—</div>
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--green);margin-bottom:6px;">L1 Analysis - Technically Compliant Vendors Only</div>
+            <div id="f02_auto_msg" style="font-size:12.5px;">-</div>
           </div>
           <div class="fgrid fg2" style="margin-top:10px">
             <div class="field">
               <label>Final Recommended Vendor</label>
               <select id="f02_final_vendor" style="border:1.5px solid var(--border);border-radius:var(--r-sm);padding:8px 11px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text);background:white;outline:none;width:100%;transition:border-color var(--t);">
-                <option value="">— Select vendor —</option>
+                <option value="">- Select vendor -</option>
               </select>
             </div>
             <div class="field"><label>Justification</label><input type="text" id="f02_justification" placeholder="e.g. L1 with full technical compliance"/></div>
@@ -856,10 +856,10 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
         </div>
       </div>
 
-      <!-- Forms 03–08 abbreviated with same structure -->
+      <!-- Forms 03-08 abbreviated with same structure -->
       <div id="page-f03" class="hidden">
         <div class="form-header"><div class="form-header-inner">
-          <div class="fh-left"><div class="fh-title">Purchase Order — Internal Approval Record</div><div class="fh-sub">Step 3 · PO released only after all 3 signatures</div></div>
+          <div class="fh-left"><div class="fh-title">Purchase Order - Internal Approval Record</div><div class="fh-sub">Step 3 · PO released only after all 3 signatures</div></div>
           <div class="fh-right"><div class="fh-no-label">Form No.</div><div class="fh-no">JCPL-FIN-03</div><div class="fh-rev">Rev 00 · 2025</div></div>
         </div></div>
         <div class="alert alert-warn">⚠️ Purchase Order must NOT be sent to vendor before this form is fully signed.</div>
@@ -935,7 +935,7 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
           <div class="fh-left"><div class="fh-title">Goods Receipt Note (GRN)</div><div class="fh-sub">Step 4 · Stores raises within 24 hrs of receipt</div></div>
           <div class="fh-right"><div class="fh-no-label">Form No.</div><div class="fh-no">JCPL-FIN-04</div><div class="fh-rev">Rev 00 · 2025</div></div>
         </div></div>
-        <div class="alert alert-warn">⚠️ GRN must be raised within 24 hours. Rejected quantities must be documented — no payment on rejected qty.</div>
+        <div class="alert alert-warn">⚠️ GRN must be raised within 24 hours. Rejected quantities must be documented - no payment on rejected qty.</div>
         <div class="section-head">Receipt Details</div>
         <div class="form-card"><div class="form-card-body">
           <div class="fgrid fg4">
@@ -1255,10 +1255,10 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
 
         <!-- Summary Cards -->
         <div class="dash-grid" style="margin-bottom:20px;">
-          <div class="stat-card c-navy"><div class="stat-icon">₹</div><div class="stat-val" id="rpt_total_spend">—</div><div class="stat-label">Total Spend This Month (&#8377;)</div></div>
-          <div class="stat-card c-green"><div class="stat-icon">✅</div><div class="stat-val" id="rpt_paid">—</div><div class="stat-label">Payments Released</div></div>
-          <div class="stat-card c-orange"><div class="stat-icon">⏳</div><div class="stat-val" id="rpt_pending">—</div><div class="stat-label">Pending Approvals</div></div>
-          <div class="stat-card c-amber"><div class="stat-icon">📋</div><div class="stat-val" id="rpt_indents">—</div><div class="stat-label">Indents Raised</div></div>
+          <div class="stat-card c-navy"><div class="stat-icon">₹</div><div class="stat-val" id="rpt_total_spend">-</div><div class="stat-label">Total Spend This Month (&#8377;)</div></div>
+          <div class="stat-card c-green"><div class="stat-icon">✅</div><div class="stat-val" id="rpt_paid">-</div><div class="stat-label">Payments Released</div></div>
+          <div class="stat-card c-orange"><div class="stat-icon">⏳</div><div class="stat-val" id="rpt_pending">-</div><div class="stat-label">Pending Approvals</div></div>
+          <div class="stat-card c-amber"><div class="stat-icon">📋</div><div class="stat-val" id="rpt_indents">-</div><div class="stat-label">Indents Raised</div></div>
         </div>
 
         <!-- Charts row -->
@@ -1277,7 +1277,7 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
 
         <!-- Pending Aging Table -->
         <div class="form-card"><div class="form-card-body">
-          <div class="section-head" style="margin-top:0;">Pending Approvals — Aging</div>
+          <div class="section-head" style="margin-top:0;">Pending Approvals - Aging</div>
           <div class="tbl-wrap">
             <table class="form-table" id="aging_table">
               <thead><tr><th>Record ID</th><th>Form</th><th>Submitted By</th><th>Submitted At</th><th>Days Pending</th><th>Next Approver</th><th>Urgency</th></tr></thead>
@@ -1406,11 +1406,11 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
             <div style="padding:14px;background:var(--navy-pale);border-radius:var(--r-sm);border:1px solid var(--navy-light)">
               <div style="font-weight:700;font-size:13px;color:var(--navy);margin-bottom:8px">📊 Google Sheet Tabs</div>
               <div style="font-size:12px;color:var(--text);line-height:1.9">
-                <strong>Users</strong> — Login credentials &amp; roles<br>
-                <strong>Sessions</strong> — Active login tokens (8hr expiry)<br>
-                <strong>FormData</strong> — All submitted forms with status<br>
-                <strong>Approvals</strong> — Every approve/hold/reject decision<br>
-                <strong>AuditLog</strong> — Timestamped full activity trail
+                <strong>Users</strong> - Login credentials &amp; roles<br>
+                <strong>Sessions</strong> - Active login tokens (8hr expiry)<br>
+                <strong>FormData</strong> - All submitted forms with status<br>
+                <strong>Approvals</strong> - Every approve/hold/reject decision<br>
+                <strong>AuditLog</strong> - Timestamped full activity trail
               </div>
             </div>
             <div style="padding:14px;background:var(--green-light);border-radius:var(--r-sm);border:1px solid #b2dfcc">
@@ -1485,13 +1485,13 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
 
 <script>
 // ════════════════════════════════════════════════════════════
-// JCPL PAYMENT PORTAL v2 — Client-side Logic
+// JCPL PAYMENT PORTAL v2 - Client-side Logic
 // ════════════════════════════════════════════════════════════
 
 // ── CONFIG ───────────────────────────────────────────────────
-let BACKEND_URL = ''; // Backend disabled — using local storage only
+let BACKEND_URL = ''; // Backend disabled - using local storage only
 let SESSION     = JSON.parse(localStorage.getItem('jcpl_session') || 'null');
-let OFFLINE_MODE = true; // Backend blocked by Google Workspace admin policy — using local storage
+let OFFLINE_MODE = true; // Backend blocked by Google Workspace admin policy - using local storage
 
 // Demo users for offline mode
 const DEMO_USERS = [
@@ -1544,7 +1544,7 @@ document.addEventListener('DOMContentLoaded', () => {
   OFFLINE_MODE = !BACKEND_URL;
 
   buildChecklist('f04_checks',['Quantity matches PO','Make / Model as per PO','No physical damage','Correct part number','Packing intact','Certificate of Conformance','Warranty documents included']);
-  buildChecklist('f05_checks',['PO–Invoice: Description matches','PO–Invoice: Quantity matches','PO–Invoice: Rate matches','GRN–Invoice: Qty received matches','Material fully accepted','Invoice stamped by vendor','GST compliant invoice','TDS computed correctly','Advance adjustment done','Statutory deductions verified']);
+  buildChecklist('f05_checks',['PO-Invoice: Description matches','PO-Invoice: Quantity matches','PO-Invoice: Rate matches','GRN-Invoice: Qty received matches','Material fully accepted','Invoice stamped by vendor','GST compliant invoice','TDS computed correctly','Advance adjustment done','Statutory deductions verified']);
   buildChecklist('f05_docs',['Vendor Invoice (Original)','Purchase Order copy','GRN copy','Delivery Challan / LR','Inspection Report','Advance Payment Proof (if any)','TDS Computation Sheet']);
   buildChecklist('f07_checks',['Payment released via banking portal','UTR number noted','TDS challan updated','Vendor ledger updated in Tally/ERP','AP register updated','Invoice stamped PAID','Advance adjustment entry passed','Proof of payment filed']);
 
@@ -1700,8 +1700,8 @@ function showApp() {
   document.getElementById('loginScreen').style.display = 'none';
   document.getElementById('appShell').style.display = 'flex';
 
-  const name = SESSION?.name || '—';
-  const role = SESSION?.role || '—';
+  const name = SESSION?.name || '-';
+  const role = SESSION?.role || '-';
   document.getElementById('userName').textContent = name;
   document.getElementById('userRole').textContent = role;
   document.getElementById('userAvatar').textContent = name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
@@ -1718,7 +1718,7 @@ function showApp() {
 
 // ── DASHBOARD ─────────────────────────────────────────────────
 async function loadDashboard() {
-  // Always render from local data first — instant, no network needed
+  // Always render from local data first - instant, no network needed
   const recs = JSON.parse(localStorage.getItem('jcpl_records') || '[]');
   const myNotifs = getMyNotifications().filter(n => !n.read).length;
   const totalPending = recs.filter(r => (r.status||r.Status)==='Submitted' && getNextApprover(r.FormCode||r.formCode)===SESSION?.role).length + myNotifs;
@@ -1740,13 +1740,13 @@ async function loadDashboard() {
   if(ptb && recRes.ok) {
     const myRecs = (recRes.records || []).filter(r => (r.nextApprover || r.ApproverRole) === SESSION?.role || SESSION?.role === 'Director');
     if(!myRecs.length) {
-      ptb.innerHTML = '<div style="padding:18px;color:var(--text-muted);font-size:12.5px;text-align:center">🎉 No pending actions — you\'re all caught up!</div>';
+      ptb.innerHTML = '<div style="padding:18px;color:var(--text-muted);font-size:12.5px;text-align:center">🎉 No pending actions - you\'re all caught up!</div>';
     } else {
       ptb.innerHTML = `<table class="ptable"><thead><tr><th>Record ID</th><th>Form</th><th>Submitted By</th><th>Submitted At</th><th>Status</th><th>Action</th></tr></thead><tbody>` +
         myRecs.map(r => `<tr>
           <td class="mono" style="font-size:11px">${r.RecordID}</td>
           <td><span class="badge badge-navy">${r.FormCode}</span></td>
-          <td>${r.SubmittedBy || r.submittedBy || '—'}</td>
+          <td>${r.SubmittedBy || r.submittedBy || '-'}</td>
           <td style="font-size:11.5px">${fmtDate(r.SubmittedAt || r.submittedAt)}</td>
           <td><span class="status-badge sb-submitted">Submitted</span></td>
           <td><button class="btn btn-primary" style="font-size:11px;padding:5px 10px;" onclick="quickApprove('${r.RecordID}','${r.FormCode}')">Approve / Review</button></td>
@@ -1998,7 +1998,7 @@ function renderNotifPanel() {
       <div style="flex:1;">
         <div style="font-size:13px;font-weight:600;color:var(--text);">${n.message}</div>
         <div style="font-size:11px;color:var(--text-muted);margin-top:3px;">
-          Indent Ref: <strong>${n.indentRef || '—'}</strong> &nbsp;·&nbsp; ${fmtDate(n.ts)}
+          Indent Ref: <strong>${n.indentRef || '-'}</strong> &nbsp;·&nbsp; ${fmtDate(n.ts)}
         </div>
       </div>
       <button onclick="goToIndent('${n.indentRef}')" class="btn btn-primary" style="font-size:11px;padding:5px 12px;flex-shrink:0;">
@@ -2013,11 +2013,11 @@ function goToIndent(ref) {
   showPage('f01');
   updateNotifBell();
   renderNotifPanel();
-  toast('📋 Opened Form 01 — Indent ' + ref, 'success');
+  toast('📋 Opened Form 01 - Indent ' + ref, 'success');
 }
 
 // ══════════════════════════════════════════════════════════════
-// GENERIC SEQUENTIAL APPROVAL — for Forms 02-07
+// GENERIC SEQUENTIAL APPROVAL - for Forms 02-07
 // ══════════════════════════════════════════════════════════════
 const formStepStates = {};
 
@@ -2036,7 +2036,7 @@ function confirmFormStep(formId, step) {
   // Update status badge
   const statusEl = document.getElementById(formId + '_s' + step + '_status');
   if (statusEl) {
-    statusEl.textContent = '✅ Signed — ' + nameEl.value + ' · ' + dateEl.value;
+    statusEl.textContent = '✅ Signed - ' + nameEl.value + ' · ' + dateEl.value;
     statusEl.style.background = 'var(--green-light)';
     statusEl.style.color = 'var(--green)';
   }
@@ -2076,7 +2076,7 @@ function confirmFormStep(formId, step) {
       pushNotification([nextRole], 'Action Required: Your sign-off needed on ' + (formNames[formId] || formId.toUpperCase()), formId.toUpperCase(), step >= 2 ? 'high' : 'normal');
     }
   } else {
-    // Final step — enable submit button
+    // Final step - enable submit button
     const submitBtn = document.getElementById(formId + 'SubmitBtn');
     if (submitBtn) submitBtn.disabled = false;
     toast('✅ All sign-offs complete! Submit button enabled.', 'success');
@@ -2089,7 +2089,7 @@ function printForm(formId) {
   if (!page) return;
   const printWin = window.open('', '_blank', 'width=900,height=700');
   printWin.document.write(`<!DOCTYPE html><html><head>
-    <title>Jisnu Procurement Portal — ${formId.toUpperCase()}</title>
+    <title>Jisnu Procurement Portal - ${formId.toUpperCase()}</title>
     <style>
       body { font-family: Arial, sans-serif; font-size: 12px; color: #1e2a3b; margin: 20px; }
       h1 { color: #1B3A6B; font-size: 16px; margin-bottom: 4px; }
@@ -2115,7 +2115,7 @@ function printForm(formId) {
   clone.querySelectorAll('input, select, textarea').forEach(el => {
     const span = document.createElement('span');
     span.style.cssText = 'display:block;padding:4px 7px;border:1px solid #dde3ef;border-radius:4px;min-height:24px;background:#f9f9f9;font-size:12px;';
-    span.textContent = el.value || '—';
+    span.textContent = el.value || '-';
     el.parentNode.replaceChild(span, el);
   });
   // Remove buttons
@@ -2165,10 +2165,10 @@ function renderRecordsTable(recs) {
     return `<tr>
       <td class="mono" style="font-size:11px">${r.RecordID}</td>
       <td><span class="badge badge-navy">${r.FormCode}</span></td>
-      <td>${r.SubmittedBy || '—'}</td>
+      <td>${r.SubmittedBy || '-'}</td>
       <td style="font-size:11px">${fmtDate(r.SubmittedAt)}</td>
       <td><span class="status-badge ${cls}">${st}</span></td>
-      <td style="font-size:11px">${r.nextApprover || getNextApprover(r.FormCode) || '—'}</td>
+      <td style="font-size:11px">${r.nextApprover || getNextApprover(r.FormCode) || '-'}</td>
       <td><button class="btn btn-outline" style="font-size:11px;padding:5px 10px;" onclick="quickApprove('${r.RecordID}','${r.FormCode||''}')">Review</button></td>
     </tr>`;
   }).join('') + '</tbody></table>';
@@ -2204,7 +2204,7 @@ async function loadReports() {
   set('rpt_pending', recs.filter(r => (r.Status||r.status) === 'Submitted').length);
   set('rpt_indents', recs.filter(r => r.FormCode === 'FIN-01').length);
 
-  // Bar chart — by form
+  // Bar chart - by form
   const forms = ['FIN-01','FIN-02','FIN-03','FIN-04','FIN-05','FIN-06','FIN-07','FIN-08'];
   const counts = forms.map(f => recs.filter(r => r.FormCode === f).length);
   const maxCount = Math.max(...counts, 1);
@@ -2250,10 +2250,10 @@ async function loadReports() {
         return `<tr>
           <td class="mono" style="font-size:11px">${r.RecordID}</td>
           <td><span class="badge badge-navy">${r.FormCode}</span></td>
-          <td>${r.SubmittedBy || '—'}</td>
+          <td>${r.SubmittedBy || '-'}</td>
           <td style="font-size:11px">${fmtDate(r.SubmittedAt)}</td>
           <td style="text-align:center;font-weight:700;color:${days>5?'var(--red)':days>2?'var(--amber)':'var(--green)'};">${days}d</td>
-          <td style="font-size:11px">${r.nextApprover || getNextApprover(r.FormCode) || '—'}</td>
+          <td style="font-size:11px">${r.nextApprover || getNextApprover(r.FormCode) || '-'}</td>
           <td>${urgency}</td>
         </tr>`;
       }).join('');
@@ -2293,12 +2293,12 @@ function changePassword() {
   if (newPwd.length < 8) { statusEl.innerHTML = '<span style="color:var(--red)">New password must be at least 8 characters.</span>'; return; }
   if (newPwd !== confirm) { statusEl.innerHTML = '<span style="color:var(--red)">Passwords do not match.</span>'; return; }
 
-  // In offline mode — update local demo user
+  // In offline mode - update local demo user
   if (OFFLINE_MODE) {
     statusEl.innerHTML = '<span style="color:var(--amber)">⚠ Password change requires backend connection. Connect Google Sheets to enable.</span>';
     return;
   }
-  // With backend — call changePassword action
+  // With backend - call changePassword action
   api('changePassword', { currentPassword: current, newPassword: newPwd }).then(res => {
     if (res.ok) {
       statusEl.innerHTML = '<span style="color:var(--green)">✅ Password changed successfully. Use the new password on next login.</span>';
@@ -2436,7 +2436,7 @@ function confirmStep(step) {
   // Update status badge to signed
   const statusEl = document.getElementById(statusLabels[step]);
   if (statusEl) {
-    statusEl.textContent = '✅ Signed — ' + (names[step] || '') + ' · ' + (dates[step] || '');
+    statusEl.textContent = '✅ Signed - ' + (names[step] || '') + ' · ' + (dates[step] || '');
     statusEl.style.background = 'var(--green-light)';
     statusEl.style.color = 'var(--green)';
     statusEl.style.fontWeight = '700';
@@ -2478,7 +2478,7 @@ function confirmStep(step) {
     const nextRoles = F01_STEP_NOTIFY_ROLE[step] || [];
     const stepNames = ['', 'Indenter', 'Section Head', 'Stores Verification', 'Management'];
     const indentRef = document.getElementById('f01_indent_no')?.value || 'New Indent';
-    const signer    = names[step] || SESSION?.name || '—';
+    const signer    = names[step] || SESSION?.name || '-';
     const nextLabel = ['', 'Section Head', 'Stores Verification', 'Management Approval', ''][step];
     if (nextRoles.length) {
       pushNotification(
@@ -2501,7 +2501,7 @@ function confirmStep(step) {
       // Notify Purchase Manager that indent is fully approved and ready
       pushNotification(
         ['Purchase Manager', 'Purchase Exec'],
-        'Indent Fully Approved — Ready for Quotation Process (FIN-02)',
+        'Indent Fully Approved - Ready for Quotation Process (FIN-02)',
         indentRef,
         'high'
       );
@@ -2510,7 +2510,7 @@ function confirmStep(step) {
       // Notify Indenter that their indent was held/rejected
       pushNotification(
         ['Indenter'],
-        'Management Decision: ' + dec + ' — Review required on your Purchase Indent',
+        'Management Decision: ' + dec + ' - Review required on your Purchase Indent',
         indentRef,
         'high'
       );
@@ -2734,10 +2734,10 @@ function autoSelectVendor() {
   const finalSel = document.getElementById('f02_final_vendor');
   if (finalSel) {
     const currentVal = finalSel.value;
-    finalSel.innerHTML = '<option value="">— Select vendor —</option>' +
+    finalSel.innerHTML = '<option value="">- Select vendor -</option>' +
       allVendors.map(v => {
         const tcLabel = v.tc === 'Yes' ? '✅' : v.tc === 'Partial' ? '⚠️' : '❌';
-        const priceLabel = v.price ? ' — ₹' + v.price.toLocaleString('en-IN',{minimumFractionDigits:2}) : '';
+        const priceLabel = v.price ? ' - ₹' + v.price.toLocaleString('en-IN',{minimumFractionDigits:2}) : '';
         return `<option value="${v.name}" ${v.name === currentVal ? 'selected' : ''}>${tcLabel} ${v.name}${priceLabel}</option>`;
       }).join('');
     // Restore previous selection if still valid
@@ -2756,7 +2756,7 @@ function autoSelectVendor() {
 
   if (!allVendors.filter(v => v.price !== null).length) {
     if(pn) pn.value = ''; if(pp) pp.value = ''; if(ptc) ptc.value = '';
-    if(msg) msg.textContent = '—';
+    if(msg) msg.textContent = '-';
     return;
   }
 
@@ -2767,14 +2767,14 @@ function autoSelectVendor() {
   // Build ranked message
   if(msg) msg.innerHTML = allPriced.map((v,i) => {
     const medal = i===0 ? '🥇' : i===1 ? '🥈' : '🥉';
-    const eligible_tag = (v.tc === 'Yes' || v.tc === 'Partial') ? '' : ' <span style="color:var(--red);font-size:11px;">(excluded — non-compliant)</span>';
-    return `${medal} <strong>${v.name}</strong> — ₹${v.price.toLocaleString('en-IN',{minimumFractionDigits:2})} &nbsp;${tcIcon(v)}${eligible_tag}`;
+    const eligible_tag = (v.tc === 'Yes' || v.tc === 'Partial') ? '' : ' <span style="color:var(--red);font-size:11px;">(excluded - non-compliant)</span>';
+    return `${medal} <strong>${v.name}</strong> - ₹${v.price.toLocaleString('en-IN',{minimumFractionDigits:2})} &nbsp;${tcIcon(v)}${eligible_tag}`;
   }).join('<br>');
 
   if (!eligible.length) {
-    // No compliant vendors — warn and leave preferred blank
+    // No compliant vendors - warn and leave preferred blank
     if(pn) { pn.value = 'No compliant vendor'; pn.style.background = 'var(--red-light)'; pn.style.color = 'var(--red)'; }
-    if(pp) { pp.value = '—'; }
+    if(pp) { pp.value = '-'; }
     if(ptc) { ptc.value = 'None'; }
     if(finalSel) finalSel.value = '';
     return;
@@ -2793,7 +2793,7 @@ function autoSelectVendor() {
 
   // If L1 overall is not the technically-eligible L1, note it
   if (allPriced[0].name !== l1.name) {
-    if(msg) msg.innerHTML += `<br><span style="color:var(--amber);font-size:12px;font-weight:600;">⚠️ Note: ${allPriced[0].name} is overall L1 by price but excluded — non-compliant. Next eligible L1 is ${l1.name}.</span>`;
+    if(msg) msg.innerHTML += `<br><span style="color:var(--amber);font-size:12px;font-weight:600;">⚠️ Note: ${allPriced[0].name} is overall L1 by price but excluded - non-compliant. Next eligible L1 is ${l1.name}.</span>`;
   }
 }
 
@@ -2816,7 +2816,7 @@ function genIndentNo() {
   if(el) el.value = 'JCPL-IND-' + new Date().getFullYear() + '-' + String((offlineRecords.length+1)).padStart(3,'0');
 }
 function fmtDate(ts) {
-  if(!ts) return '—';
+  if(!ts) return '-';
   try { return new Date(ts).toLocaleString('en-IN',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}); }
   catch(e) { return ts; }
 }
