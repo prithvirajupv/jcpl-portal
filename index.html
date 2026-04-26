@@ -1007,270 +1007,213 @@ table.form-table .grand-row td{background:var(--navy) !important;color:white !im
 
       <div id="page-f05" class="hidden" style="display:none">
         <div class="form-header"><div class="form-header-inner">
-          <div class="fh-left"><div class="fh-title">Payment Put-Up / Bill Processing Note</div><div class="fh-sub">Step 5 &middot; Accounts &middot; Three-way match required</div></div>
-          <div class="fh-right"><div class="fh-no-label">Form No.</div><div class="fh-no">JCPL-FIN-05</div><div class="fh-rev">Rev 00 &middot; 2025</div></div>
+          <div class="fh-left"><div class="fh-title">Payment Put-Up / Bill Processing Note</div><div class="fh-sub">Step 5 - Accounts - Three-way match required before routing</div></div>
+          <div class="fh-right"><div class="fh-no-label">Form No.</div><div class="fh-no">JCPL-FIN-05</div><div class="fh-rev">Rev 00 - 2025</div></div>
         </div></div>
-        <div class="section-head">Invoice &amp; Payment Details</div>
+        <div class="section-head">A. Invoice Details</div>
         <div class="form-card"><div class="form-card-body">
           <div class="fgrid fg4">
-            <div class="field"><label>Vendor Name</label><input type="text" id="f05_vendor"/></div>
-            <div class="field"><label>Vendor GSTIN</label><input type="text" id="f05_gstin"/></div>
-            <div class="field"><label>Invoice No.</label><input type="text" id="f05_inv"/></div>
+            <div class="field"><label>Vendor Name</label><input type="text" id="f05_vendor" placeholder="Vendor name"/></div>
+            <div class="field"><label>Vendor GSTIN</label><input type="text" id="f05_gstin" placeholder="GSTIN"/></div>
+            <div class="field"><label>Invoice No.</label><input type="text" id="f05_inv" placeholder="Invoice number"/></div>
             <div class="field"><label>Invoice Date</label><input type="date" id="f05_inv_date"/></div>
-            <div class="field"><label>PO Reference</label><input type="text" id="f05_po"/></div>
-            <div class="field"><label>GRN Reference</label><input type="text" id="f05_grn"/></div>
-            <div class="field"><label>Invoice Value (&#8377;)</label><input type="number" id="f05_inv_val" min="0" step="0.01" oninput="calcF05()"/></div>
-            <div class="field"><label>GST Amount (&#8377;)</label><input type="number" id="f05_gst" min="0" step="0.01" oninput="calcF05()"/></div>
-            <div class="field"><label>TDS Deducted (&#8377;)</label><input type="number" id="f05_tds" min="0" step="0.01" oninput="calcF05()"/></div>
-            <div class="field"><label>Advance Paid (&#8377;)</label><input type="number" id="f05_adv" min="0" step="0.01" oninput="calcF05()"/></div>
-            <div class="field"><label>Total Payable (&#8377;)</label><input type="text" id="f05_total" readonly class="computed"/></div>
-            <div class="field"><label>Net Balance Payable (&#8377;)</label><input type="text" id="f05_net" readonly class="computed" style="font-size:15px"/></div>
+            <div class="field"><label>PO Reference</label><input type="text" id="f05_po" placeholder="PO number"/></div>
+            <div class="field"><label>GRN Reference</label><input type="text" id="f05_grn" placeholder="GRN number"/></div>
+            <div class="field"><label>Invoice Value (Rs.)</label><input type="number" id="f05_inv_val" min="0" step="0.01" oninput="calcF05()"/></div>
+            <div class="field"><label>GST Amount (Rs.)</label><input type="number" id="f05_gst" min="0" step="0.01" oninput="calcF05()"/></div>
+            <div class="field"><label>TDS Deducted (Rs.)</label><input type="number" id="f05_tds" min="0" step="0.01" oninput="calcF05()"/></div>
+            <div class="field"><label>Advance Paid (Rs.)</label><input type="number" id="f05_adv" min="0" step="0.01" oninput="calcF05()"/></div>
+            <div class="field"><label>Total Payable (Rs.)</label><input type="text" id="f05_total" readonly class="computed"/></div>
+            <div class="field"><label>Net Balance Payable (Rs.)</label><input type="text" id="f05_net" readonly class="computed"/></div>
           </div>
         </div></div>
-        <div class="section-head">Three-Way Matching Checklist</div>
-        <div class="form-card"><div class="form-card-body"><div class="checklist" id="f05_checks"></div></div></div>
-        <div class="section-head">Documents Attached</div>
-        <div class="form-card"><div class="form-card-body"><div class="checklist" id="f05_docs"></div></div></div>
-        <div class="section-head">Approval Chain</div>
+        <div class="section-head">B. Three-Way Match Checklist</div>
+        <div class="form-card"><div class="form-card-body">
+          <div id="f05_checks"></div>
+        </div></div>
+        <div class="section-head">C. Documents Checklist</div>
+        <div class="form-card"><div class="form-card-body">
+          <div id="f05_docs"></div>
+        </div></div>
+        <div class="section-head">D. Approval Chain</div>
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px;">
-          <div id="f05_step1_box" style="border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);">
-            <div style="background:var(--navy);padding:11px 16px;text-align:center;"><span style="color:white;font-weight:700;font-size:12px;text-transform:uppercase;">Accounts Executive</span></div>
-            <div style="padding:16px;background:white;display:flex;flex-direction:column;gap:10px;">
+          <div id="f05_step1_box" style="border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;">
+            <div style="background:var(--navy);padding:11px 16px;text-align:center;"><span style="color:white;font-weight:700;font-size:12px;">ACCOUNTS EXECUTIVE</span></div>
+            <div style="padding:16px;background:white;">
               <div class="field"><label>Name</label><input type="text" id="f05_s1_name"/></div>
               <div class="field"><label>Date</label><input type="date" id="f05_s1_date"/></div>
               <div class="field"><label>Remarks</label><input type="text" id="f05_s1_rem"/></div>
+              <button class="btn btn-primary" style="width:100%;margin-top:8px;" onclick="confirmFormStep('f05',1)">Confirm</button>
             </div>
-            <div id="f05_s1_status" style="background:#fff8ec;border-top:1px solid var(--border);padding:9px 16px;text-align:center;font-size:12.5px;font-weight:600;color:var(--amber);">&#9203; Pending</div>
-            <div style="padding:12px 16px;background:white;border-top:1px solid var(--border);"><button class="btn btn-primary" style="width:100%;font-size:12px;padding:8px;" onclick="confirmFormStep('f05',1)">&#10004; Confirm</button></div>
           </div>
-          <div id="f05_step2_box" style="border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);opacity:0.42;pointer-events:none;">
-            <div style="background:var(--navy);padding:11px 16px;text-align:center;"><span style="color:white;font-weight:700;font-size:12px;text-transform:uppercase;">Purchase Manager</span></div>
-            <div style="padding:16px;background:white;display:flex;flex-direction:column;gap:10px;">
+          <div id="f05_step2_box" style="border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;opacity:0.5;">
+            <div style="background:var(--navy);padding:11px 16px;text-align:center;"><span style="color:white;font-weight:700;font-size:12px;">PURCHASE MANAGER</span></div>
+            <div style="padding:16px;background:white;">
               <div class="field"><label>Name</label><input type="text" id="f05_s2_name"/></div>
               <div class="field"><label>Date</label><input type="date" id="f05_s2_date"/></div>
               <div class="field"><label>Remarks</label><input type="text" id="f05_s2_rem"/></div>
+              <button class="btn btn-primary" style="width:100%;margin-top:8px;" onclick="confirmFormStep('f05',2)">Confirm</button>
             </div>
-            <div id="f05_s2_status" style="background:#fff8ec;border-top:1px solid var(--border);padding:9px 16px;text-align:center;font-size:12.5px;font-weight:600;color:var(--amber);">&#128274; Locked</div>
-            <div style="padding:12px 16px;background:white;border-top:1px solid var(--border);"><button class="btn btn-primary" style="width:100%;font-size:12px;padding:8px;" onclick="confirmFormStep('f05',2)">&#10004; Confirm</button></div>
           </div>
-          <div id="f05_step3_box" style="border:1.5px solid var(--orange);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);opacity:0.42;pointer-events:none;">
-            <div style="background:var(--orange);padding:11px 16px;text-align:center;"><span style="color:white;font-weight:700;font-size:12px;text-transform:uppercase;">Finance Head / CFO</span></div>
-            <div style="padding:16px;background:white;display:flex;flex-direction:column;gap:10px;">
+          <div id="f05_step3_box" style="border:1.5px solid var(--orange);border-radius:var(--r);overflow:hidden;opacity:0.5;">
+            <div style="background:var(--orange);padding:11px 16px;text-align:center;"><span style="color:white;font-weight:700;font-size:12px;">FINANCE HEAD / CFO</span></div>
+            <div style="padding:16px;background:white;">
               <div class="field"><label>Name</label><input type="text" id="f05_s3_name"/></div>
               <div class="field"><label>Date</label><input type="date" id="f05_s3_date"/></div>
-              <div class="field"><label>Decision</label><select id="f05_s3_decision"><option value="">-- Select --</option><option>Approved</option><option>Hold</option><option>Rejected</option></select></div>
+              <div class="field"><label>Decision</label><select id="f05_s3_decision"><option value="">Select</option><option>Approved</option><option>Hold</option><option>Rejected</option></select></div>
+              <button class="btn btn-orange" style="width:100%;margin-top:8px;" onclick="confirmFormStep('f05',3)">CFO Approval</button>
             </div>
-            <div id="f05_s3_status" style="background:#fff8ec;border-top:1px solid var(--border);padding:9px 16px;text-align:center;font-size:12.5px;font-weight:600;color:var(--amber);">&#128274; Locked</div>
-            <div style="padding:12px 16px;background:white;border-top:1px solid var(--border);"><button class="btn btn-orange" style="width:100%;font-size:12px;padding:8px;" onclick="confirmFormStep('f05',3)">&#10004; CFO Approval</button></div>
           </div>
         </div>
         <div class="btn-row">
-          <button class="btn btn-primary" id="f05SubmitBtn" onclick="submitFormData('FIN-05','Payment Put-Up','f06')" disabled>Submit &rarr; Route to MD for Approval</button>
-          <button class="btn btn-ghost" onclick="saveDraftLocal('f05')">&#128190; Save Draft</button>
-          <button class="btn btn-ghost" onclick="printForm('f05')">&#128424; Print</button>
+          <button class="btn btn-primary" id="f05SubmitBtn" onclick="submitFormData('FIN-05','Payment Put-Up','f06')" disabled>Submit - Route to MD Approval</button>
+          <button class="btn btn-ghost" onclick="saveDraftLocal('f05')">Save Draft</button>
+          <button class="btn btn-ghost" onclick="printForm('f05')">Print</button>
         </div>
       </div>
 
       <div id="page-f06" class="hidden" style="display:none">
         <div class="form-header"><div class="form-header-inner">
-          <div class="fh-left"><div class="fh-title">Payment Approval Note</div><div class="fh-sub">Step 6 · Director / MD gate — no disbursement without this</div></div>
-          <div class="fh-right"><div class="fh-no-label">Form No.</div><div class="fh-no">JCPL-FIN-06</div><div class="fh-rev">Rev 00 · 2025</div></div>
+          <div class="fh-left"><div class="fh-title">Payment Approval - MD Gate</div><div class="fh-sub">Step 6 - MD/Director Final Approval</div></div>
+          <div class="fh-right"><div class="fh-no-label">Form No.</div><div class="fh-no">JCPL-FIN-06</div><div class="fh-rev">Rev 00 - 2025</div></div>
         </div></div>
-        <div class="alert alert-error">🔒 <strong>Mandatory Gate:</strong> Disbursement is blocked until the Director / MD records a decision here.</div>
-
-        <div class="section-head">A. Summary for Approval</div>
+        <div class="section-head">A. Payment Summary</div>
         <div class="form-card"><div class="form-card-body">
           <div class="fgrid fg4">
-            <div class="field"><label>Payment Put-Up Ref.</label><input type="text" id="f06_putup_ref" placeholder="FIN-05 Record ID"/></div>
             <div class="field"><label>Vendor Name</label><input type="text" id="f06_vendor"/></div>
             <div class="field"><label>Invoice No.</label><input type="text" id="f06_inv"/></div>
-            <div class="field"><label>Proposed Pay Date</label><input type="date" id="f06_pay_date"/></div>
-            <div class="field"><label>Budget Head / Cost Centre</label><input type="text" id="f06_budget"/></div>
-            <div class="field"><label>Payment Mode</label><select id="f06_mode"><option>RTGS</option><option>NEFT</option><option>Cheque</option></select></div>
-            <div class="field"><label>PO / Project Reference</label><input type="text" id="f06_project"/></div>
-          </div>
-          <div style="background:var(--green-light);border:2px solid #b2dfcc;border-radius:var(--r-sm);padding:14px 18px;margin-top:14px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
-            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--green);min-width:160px;">Net Amount Payable (&#8377;)</div>
-            <input type="text" id="f06_amount" placeholder="&#8377; 0.00" style="border:none;background:transparent;font-size:20px;font-weight:700;color:var(--navy);font-family:'DM Serif Display',serif;flex:1;outline:none;min-width:120px"/>
-            <input type="text" id="f06_words" placeholder="In words: Rupees ..." style="border:1px solid var(--border);border-radius:5px;padding:8px 12px;font-size:12.5px;flex:2;font-family:'DM Sans',sans-serif;outline:none;min-width:200px"/>
+            <div class="field"><label>Amount (Rs.)</label><input type="number" id="f06_amount" min="0" step="0.01"/></div>
+            <div class="field"><label>Payment Mode</label><select id="f06_mode"><option value="">Select</option><option>NEFT</option><option>RTGS</option><option>Cheque</option><option>IMPS</option></select></div>
+            <div class="field"><label>Bank Account</label><input type="text" id="f06_bank"/></div>
+            <div class="field"><label>IFSC Code</label><input type="text" id="f06_ifsc"/></div>
+            <div class="field"><label>Indent Ref.</label><input type="text" id="f06_indent_ref"/></div>
+            <div class="field"><label>PO Ref.</label><input type="text" id="f06_po_ref"/></div>
           </div>
         </div></div>
-
-        <div class="section-head">B. Finance Head Certification</div>
+        <div class="section-head">B. MD Decision</div>
         <div class="form-card"><div class="form-card-body">
-          <div class="alert alert-info" style="font-style:italic;margin-bottom:12px;">📋 <em>I certify that: (a) three-way match complete; (b) within approved budget; (c) statutory deductions computed; (d) no prior payment made against this invoice.</em></div>
           <div class="fgrid fg3">
-            <div class="field"><label>Finance Head Name</label><input type="text" id="f06_cfo_name"/></div>
-            <div class="field"><label>Date of Certification</label><input type="date" id="f06_cfo_date"/></div>
-            <div class="field"><label>Remarks</label><input type="text" id="f06_cfo_remarks"/></div>
+            <div class="field"><label>MD Name</label><input type="text" id="f06_md_name"/></div>
+            <div class="field"><label>Date</label><input type="date" id="f06_md_date"/></div>
+            <div class="field"><label>Decision</label><select id="f06_decision"><option value="">Select</option><option>Approved</option><option>Hold</option><option>Rejected</option></select></div>
           </div>
+          <div class="field"><label>Remarks / Conditions</label><textarea id="f06_remarks" rows="3" style="width:100%;padding:8px;border:1px solid var(--border);border-radius:var(--r);"></textarea></div>
         </div></div>
-
-        <div class="section-head">C. Director / MD Decision</div>
-        <div class="form-card"><div class="form-card-body">
-          <div style="border:2px solid var(--orange);border-radius:var(--r-sm);padding:18px 20px;">
-            <div style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:14px;text-align:center;">Make your decision — recorded with timestamp and user identity</div>
-            <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:16px;">
-              <div id="dec_approve" onclick="selectDecision('approve')" style="display:flex;align-items:center;gap:7px;padding:11px 20px;border:2px solid var(--border);border-radius:var(--r-sm);cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;background:white;">✅ APPROVED</div>
-              <div id="dec_hold" onclick="selectDecision('hold')" style="display:flex;align-items:center;gap:7px;padding:11px 20px;border:2px solid var(--border);border-radius:var(--r-sm);cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;background:white;">⏸ HOLD — REFER BACK</div>
-              <div id="dec_reject" onclick="selectDecision('reject')" style="display:flex;align-items:center;gap:7px;padding:11px 20px;border:2px solid var(--border);border-radius:var(--r-sm);cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;background:white;">✗ REJECTED</div>
-            </div>
-            <div class="fgrid fg3" style="margin-bottom:12px;">
-              <div class="field"><label>MD / Director Name</label><input type="text" id="f06_md_name"/></div>
-              <div class="field"><label>Designation</label><input type="text" id="f06_md_desig" value="Director"/></div>
-              <div class="field"><label>Date</label><input type="date" id="f06_md_date"/></div>
-            </div>
-            <div class="field"><label>Conditions / Remarks (required for Hold or Rejected)</label><textarea id="f06_remarks" style="width:100%;border:1.5px solid var(--border);border-radius:var(--r-sm);padding:9px 12px;font-family:'DM Sans',sans-serif;font-size:13px;min-height:70px;resize:vertical;outline:none;" placeholder="State reason clearly if Hold or Rejected..."></textarea></div>
-          </div>
-          <div class="btn-row">
-            <button class="btn btn-green" onclick="submitApproval()">✅ Record Decision &amp; Route to Disbursement</button>
-            <button class="btn btn-ghost" onclick="saveDraftLocal('f06')">💾 Save Draft</button>
-            <button class="btn btn-ghost" onclick="printForm('f06')">🖨 Print</button>
-          </div>
-        </div></div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="submitFormData('FIN-06','Payment Approval','f07')">Submit - Route to Disbursement</button>
+          <button class="btn btn-ghost" onclick="saveDraftLocal('f06')">Save Draft</button>
+          <button class="btn btn-ghost" onclick="printForm('f06')">Print</button>
+        </div>
       </div>
 
       <div id="page-f07" class="hidden" style="display:none">
         <div class="form-header"><div class="form-header-inner">
-          <div class="fh-left"><div class="fh-title">Payment Voucher / Disbursement Record</div><div class="fh-sub">Step 7 · Released by Accounts only after MD approval on FIN-06</div></div>
-          <div class="fh-right"><div class="fh-no-label">Form No.</div><div class="fh-no">JCPL-FIN-07</div><div class="fh-rev">Rev 00 · 2025</div></div>
+          <div class="fh-left"><div class="fh-title">Payment Voucher / Disbursement</div><div class="fh-sub">Step 7 - Accounts - Payment execution and recording</div></div>
+          <div class="fh-right"><div class="fh-no-label">Form No.</div><div class="fh-no">JCPL-FIN-07</div><div class="fh-rev">Rev 00 - 2025</div></div>
         </div></div>
-        <div class="alert alert-success">✅ Payment approval on record. Complete disbursement details and confirm every post-payment step.</div>
-
-        <div class="section-head">A. Disbursement Details</div>
+        <div class="section-head">A. Payment Details</div>
         <div class="form-card"><div class="form-card-body">
           <div class="fgrid fg4">
-            <div class="field"><label>Voucher No.</label><input type="text" placeholder="JCPL/VCH/2025/..."/></div>
-            <div class="field"><label>Voucher Date</label><input type="date"/></div>
-            <div class="field"><label>Payment Approval Ref.</label><input type="text" placeholder="FIN-06 Record ID"/></div>
-            <div class="field"><label>Payee (Vendor) Name</label><input type="text"/></div>
-            <div class="field"><label>Gross Amount (&#8377;)</label><input type="number" id="f07_gross" min="0" step="0.01" oninput="calcF07()"/></div>
-            <div class="field"><label>TDS Deducted (&#8377;)</label><input type="number" id="f07_tds" min="0" step="0.01" oninput="calcF07()"/></div>
-            <div class="field"><label>Payment Mode</label><select><option>NEFT</option><option>RTGS</option><option>Cheque</option></select></div>
-            <div class="field"><label>UTR / Cheque No.</label><input type="text" id="f07_utr"/></div>
-            <div class="field full" style="background:var(--green-light);border:2px solid #b2dfcc;border-radius:var(--r-sm);padding:12px 16px;display:flex;align-items:center;gap:14px;">
-              <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--green);min-width:160px;">Net Amount Paid (&#8377;)</div>
-              <input type="text" id="f07_net" readonly style="border:none;background:transparent;font-size:20px;font-weight:700;color:var(--navy);font-family:'DM Serif Display',serif;flex:1;outline:none;" placeholder="0.00"/>
-            </div>
-            <div class="field"><label>Bank Paid From</label><input type="text"/></div>
-            <div class="field"><label>Date of Transfer</label><input type="date"/></div>
-            <div class="field"><label>Ledger Head</label><input type="text" placeholder="e.g. Sundry Creditors"/></div>
-            <div class="field"><label>Cost Centre / Project</label><input type="text"/></div>
+            <div class="field"><label>Voucher No.</label><input type="text" id="f07_voucher_no"/></div>
+            <div class="field"><label>Payment Date</label><input type="date" id="f07_pay_date"/></div>
+            <div class="field"><label>Vendor Name</label><input type="text" id="f07_vendor"/></div>
+            <div class="field"><label>Amount Paid (Rs.)</label><input type="number" id="f07_amount" min="0" step="0.01" oninput="calcF07()"/></div>
+            <div class="field"><label>TDS (Rs.)</label><input type="number" id="f07_tds" min="0" step="0.01" oninput="calcF07()"/></div>
+            <div class="field"><label>Net Paid (Rs.)</label><input type="text" id="f07_net" readonly class="computed"/></div>
+            <div class="field"><label>Payment Mode</label><select id="f07_mode"><option value="">Select</option><option>NEFT</option><option>RTGS</option><option>Cheque</option><option>IMPS</option></select></div>
+            <div class="field"><label>Transaction Ref / Cheque No.</label><input type="text" id="f07_txn_ref"/></div>
           </div>
         </div></div>
-
         <div class="section-head">B. Post-Payment Checklist</div>
         <div class="form-card"><div class="form-card-body">
-          <div class="checklist">
-            <div class="check-item"><div class="check-item-label">1. Payment released through banking portal</div><select><option value="">-- Select --</option><option value="Y">&#10003; Done</option><option value="N">&#10007; Pending</option><option value="NA">N/A</option></select><input type="text" placeholder="Done by / Time..."/></div><div class="check-item"><div class="check-item-label">2. NEFT / RTGS UTR number noted and recorded</div><select><option value="">-- Select --</option><option value="Y">&#10003; Done</option><option value="N">&#10007; Pending</option><option value="NA">N/A</option></select><input type="text" placeholder="Done by / Time..."/></div><div class="check-item"><div class="check-item-label">3. TDS challan / liability entry updated</div><select><option value="">-- Select --</option><option value="Y">&#10003; Done</option><option value="N">&#10007; Pending</option><option value="NA">N/A</option></select><input type="text" placeholder="Done by / Time..."/></div><div class="check-item"><div class="check-item-label">4. Vendor ledger updated in ERP / Tally</div><select><option value="">-- Select --</option><option value="Y">&#10003; Done</option><option value="N">&#10007; Pending</option><option value="NA">N/A</option></select><input type="text" placeholder="Done by / Time..."/></div><div class="check-item"><div class="check-item-label">5. Accounts payable register updated</div><select><option value="">-- Select --</option><option value="Y">&#10003; Done</option><option value="N">&#10007; Pending</option><option value="NA">N/A</option></select><input type="text" placeholder="Done by / Time..."/></div><div class="check-item"><div class="check-item-label">6. Invoice stamped PAID with date and ref. no.</div><select><option value="">-- Select --</option><option value="Y">&#10003; Done</option><option value="N">&#10007; Pending</option><option value="NA">N/A</option></select><input type="text" placeholder="Done by / Time..."/></div><div class="check-item"><div class="check-item-label">7. Advance adjustment entry passed (if applicable)</div><select><option value="">-- Select --</option><option value="Y">&#10003; Done</option><option value="N">&#10007; Pending</option><option value="NA">N/A</option></select><input type="text" placeholder="Done by / Time..."/></div><div class="check-item"><div class="check-item-label">8. Proof of payment filed physically and digitally</div><select><option value="">-- Select --</option><option value="Y">&#10003; Done</option><option value="N">&#10007; Pending</option><option value="NA">N/A</option></select><input type="text" placeholder="Done by / Time..."/></div>
-          </div>
+          <div id="f07_checks"></div>
         </div></div>
-
-        <div class="section-head">C. Approval Chain</div>
+        <div class="section-head">C. Approval</div>
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px;">
-          <div id="f07_step1_box" style="border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);transition:opacity .3s;">
-            <div style="background:var(--navy);padding:11px 16px;text-align:center;"><span style="color:white;font-weight:700;font-size:12px;text-transform:uppercase;">Accounts Executive (Disburser)</span></div>
-            <div style="padding:16px;background:white;display:flex;flex-direction:column;gap:10px;">
+          <div style="border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;">
+            <div style="background:var(--navy);padding:11px 16px;text-align:center;"><span style="color:white;font-weight:700;font-size:12px;">ACCOUNTS EXECUTIVE</span></div>
+            <div style="padding:16px;background:white;">
               <div class="field"><label>Name</label><input type="text" id="f07_s1_name"/></div>
               <div class="field"><label>Date</label><input type="date" id="f07_s1_date"/></div>
-              <div class="field"><label>Remarks</label><input type="text" id="f07_s1_rem"/></div>
             </div>
-            <div id="f07_s1_status" style="background:#fff8ec;border-top:1px solid var(--border);padding:9px 16px;text-align:center;font-size:12.5px;font-weight:600;color:var(--amber);">⏳ Pending</div>
-            <div style="padding:12px 16px;background:white;border-top:1px solid var(--border);"><button class="btn btn-primary" style="width:100%;font-size:12px;padding:8px;" onclick="confirmFormStep('f07',1)">✔ Confirm Sign-off</button></div>
           </div>
-          <div id="f07_step2_box" style="border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);opacity:0.42;pointer-events:none;transition:opacity .3s;">
-            <div style="background:var(--navy);padding:11px 16px;text-align:center;"><span style="color:white;font-weight:700;font-size:12px;text-transform:uppercase;">Finance Head (Verification)</span></div>
-            <div style="padding:16px;background:white;display:flex;flex-direction:column;gap:10px;">
+          <div style="border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;">
+            <div style="background:var(--navy);padding:11px 16px;text-align:center;"><span style="color:white;font-weight:700;font-size:12px;">ACCOUNTS MANAGER</span></div>
+            <div style="padding:16px;background:white;">
               <div class="field"><label>Name</label><input type="text" id="f07_s2_name"/></div>
               <div class="field"><label>Date</label><input type="date" id="f07_s2_date"/></div>
-              <div class="field"><label>Remarks</label><input type="text" id="f07_s2_rem"/></div>
             </div>
-            <div id="f07_s2_status" style="background:#fff8ec;border-top:1px solid var(--border);padding:9px 16px;text-align:center;font-size:12.5px;font-weight:600;color:var(--amber);">🔒 Locked</div>
-            <div style="padding:12px 16px;background:white;border-top:1px solid var(--border);"><button class="btn btn-primary" style="width:100%;font-size:12px;padding:8px;" onclick="confirmFormStep('f07',2)">✔ Confirm Sign-off</button></div>
           </div>
-          <div id="f07_step3_box" style="border:1.5px solid var(--orange);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);opacity:0.42;pointer-events:none;transition:opacity .3s;">
-            <div style="background:var(--orange);padding:11px 16px;text-align:center;"><span style="color:white;font-weight:700;font-size:12px;text-transform:uppercase;">Director (Final Confirmation)</span></div>
-            <div style="padding:16px;background:white;display:flex;flex-direction:column;gap:10px;">
+          <div style="border:1.5px solid var(--orange);border-radius:var(--r);overflow:hidden;">
+            <div style="background:var(--orange);padding:11px 16px;text-align:center;"><span style="color:white;font-weight:700;font-size:12px;">FINANCE HEAD</span></div>
+            <div style="padding:16px;background:white;">
               <div class="field"><label>Name</label><input type="text" id="f07_s3_name"/></div>
               <div class="field"><label>Date</label><input type="date" id="f07_s3_date"/></div>
-              <div class="field"><label>Decision</label><select id="f07_s3_decision"><option value="">-- Select --</option><option>Approved</option><option>Hold</option><option>Rejected</option></select></div>
             </div>
-            <div id="f07_s3_status" style="background:#fff8ec;border-top:1px solid var(--border);padding:9px 16px;text-align:center;font-size:12.5px;font-weight:600;color:var(--amber);">🔒 Locked</div>
-            <div style="padding:12px 16px;background:white;border-top:1px solid var(--border);"><button class="btn btn-orange" style="width:100%;font-size:12px;padding:8px;" onclick="confirmFormStep('f07',3)">✔ Confirm Sign-off</button></div>
           </div>
         </div>
         <div class="btn-row">
-          <button class="btn btn-green" id="f07SubmitBtn" onclick="submitFormData('FIN-07','Payment Voucher','f08')" disabled>✅ Mark Disbursed → Update Register</button>
-          <button class="btn btn-ghost" onclick="saveDraftLocal('f07')">💾 Save Draft</button>
-          <button class="btn btn-ghost" onclick="printForm('f07')">🖨 Print</button>
+          <button class="btn btn-primary" onclick="submitFormData('FIN-07','Payment Voucher','f08')">Submit - Add to Register</button>
+          <button class="btn btn-ghost" onclick="saveDraftLocal('f07')">Save Draft</button>
+          <button class="btn btn-ghost" onclick="printForm('f07')">Print</button>
         </div>
       </div>
 
       <div id="page-f08" class="hidden" style="display:none">
         <div class="form-header"><div class="form-header-inner">
-          <div class="fh-left"><div class="fh-title">Payment Register — Monthly Record</div><div class="fh-sub">Step 8 · Maintained by Accounts · Reconcile with bank on last working day</div></div>
-          <div class="fh-right"><div class="fh-no-label">Form No.</div><div class="fh-no">JCPL-FIN-08</div><div class="fh-rev">Rev 00 · 2025</div></div>
+          <div class="fh-left"><div class="fh-title">Payment Register</div><div class="fh-sub">Step 8 - Monthly payment ledger and certification</div></div>
+          <div class="fh-right"><div class="fh-no-label">Form No.</div><div class="fh-no">JCPL-FIN-08</div><div class="fh-rev">Rev 00 - 2025</div></div>
         </div></div>
-
-        <div class="form-card"><div class="form-card-body" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
-          <div class="field" style="min-width:160px"><label>Period (Month)</label><input type="month" id="f08_period"/></div>
-          <div class="field" style="min-width:200px"><label>Department / Project</label><input type="text" id="f08_dept" placeholder="All / specific project..."/></div>
-          <div class="field" style="min-width:180px"><label>Maintained By</label><input type="text" id="f08_by"/></div>
-          <button class="btn btn-primary" style="margin-top:18px" onclick="addF08Row()">＋ Add Entry</button>
-        </div></div>
-
+        <div class="section-head">A. Register Details</div>
         <div class="form-card"><div class="form-card-body">
-          <div class="tbl-wrap"><table class="form-table" id="f08_table">
-            <thead><tr><th>Vch. No.</th><th>Date</th><th>Vendor Name</th><th>Invoice No.</th><th>PO Ref.</th><th>Gross (&#8377;)</th><th>TDS (&#8377;)</th><th>Net Paid (&#8377;)</th><th>Mode / UTR</th><th>Approval Ref.</th><th>Remarks</th><th>✕</th></tr></thead>
-            <tbody id="f08_body"></tbody>
-            <tfoot><tr>
-              <td colspan="5" style="text-align:right;font-weight:700;">Totals →</td>
-              <td class="mono" id="f08_gross">0.00</td>
-              <td class="mono" id="f08_tds">0.00</td>
-              <td class="mono" id="f08_net">0.00</td>
-              <td colspan="4"></td>
-            </tr></tfoot>
-          </table></div>
-        </div></div>
-
-        <div class="section-head">Month-End Closure Certification</div>
-        <div class="form-card"><div class="form-card-body">
-          <div class="alert alert-info">📋 The undersigned certify that this register reflects all payments made during the period and is reconciled with bank statements.</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:12px;">
-            <div style="border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;">
-              <div style="background:var(--navy);padding:11px 16px;text-align:center;"><span style="color:white;font-weight:700;font-size:12px;text-transform:uppercase;">Accounts Executive</span></div>
-              <div style="padding:16px;background:white;display:flex;flex-direction:column;gap:10px;">
-                <div class="field"><label>Name</label><input type="text"/></div>
-                <div class="field"><label>Date</label><input type="date"/></div>
-              </div>
-              <div style="background:#fff8ec;border-top:1px solid var(--border);padding:9px 16px;text-align:center;font-size:12.5px;font-weight:600;color:var(--amber);">⏳ Pending</div>
-            </div>
-            <div style="border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;">
-              <div style="background:var(--navy);padding:11px 16px;text-align:center;"><span style="color:white;font-weight:700;font-size:12px;text-transform:uppercase;">Finance Head</span></div>
-              <div style="padding:16px;background:white;display:flex;flex-direction:column;gap:10px;">
-                <div class="field"><label>Name</label><input type="text"/></div>
-                <div class="field"><label>Date</label><input type="date"/></div>
-              </div>
-              <div style="background:#fff8ec;border-top:1px solid var(--border);padding:9px 16px;text-align:center;font-size:12.5px;font-weight:600;color:var(--amber);">⏳ Pending</div>
-            </div>
-            <div style="border:1.5px solid var(--orange);border-radius:var(--r);overflow:hidden;">
-              <div style="background:var(--orange);padding:11px 16px;text-align:center;"><span style="color:white;font-weight:700;font-size:12px;text-transform:uppercase;">Director / MD</span></div>
-              <div style="padding:16px;background:white;display:flex;flex-direction:column;gap:10px;">
-                <div class="field"><label>Name</label><input type="text"/></div>
-                <div class="field"><label>Date</label><input type="date"/></div>
-              </div>
-              <div style="background:#fff8ec;border-top:1px solid var(--border);padding:9px 16px;text-align:center;font-size:12.5px;font-weight:600;color:var(--amber);">⏳ Awaiting Director</div>
-            </div>
-          </div>
-          <div class="btn-row">
-            <button class="btn btn-primary" onclick="submitFormData('FIN-08','Payment Register','dashboard')">🔒 Certify &amp; Close Period</button>
-            <button class="btn btn-ghost" onclick="exportCSV()">⬇ Export CSV</button>
-            <button class="btn btn-ghost" onclick="printForm('f08')">🖨 Print</button>
+          <div class="fgrid fg3">
+            <div class="field"><label>Month / Year</label><input type="month" id="f08_month"/></div>
+            <div class="field"><label>Prepared By</label><input type="text" id="f08_prepared_by"/></div>
+            <div class="field"><label>Department</label><input type="text" id="f08_dept"/></div>
           </div>
         </div></div>
+        <div class="section-head">B. Payment Entries</div>
+        <div class="form-card"><div class="form-card-body">
+          <table class="ptable" id="f08_table">
+            <thead><tr>
+              <th>#</th><th>Date</th><th>Vendor</th><th>Invoice No.</th>
+              <th>PO Ref.</th><th>Mode</th><th>Amount (Rs.)</th><th>Txn Ref.</th>
+            </tr></thead>
+            <tbody id="f08_tbody">
+              <tr>
+                <td>1</td>
+                <td><input type="date" style="border:none;width:100%;"/></td>
+                <td><input type="text" style="border:none;width:100%;" placeholder="Vendor"/></td>
+                <td><input type="text" style="border:none;width:100%;" placeholder="Invoice No."/></td>
+                <td><input type="text" style="border:none;width:100%;" placeholder="PO Ref."/></td>
+                <td><select style="border:none;width:100%;"><option>NEFT</option><option>RTGS</option><option>Cheque</option></select></td>
+                <td><input type="number" style="border:none;width:100%;" placeholder="0.00"/></td>
+                <td><input type="text" style="border:none;width:100%;" placeholder="Txn Ref."/></td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="btn btn-ghost" style="margin-top:12px;" onclick="addF08Row()">+ Add Row</button>
+        </div></div>
+        <div class="section-head">C. Certification</div>
+        <div class="form-card"><div class="form-card-body">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div>
+              <div class="field"><label>Accounts Manager</label><input type="text" id="f08_am_name"/></div>
+              <div class="field"><label>Date</label><input type="date" id="f08_am_date"/></div>
+            </div>
+            <div>
+              <div class="field"><label>Finance Head</label><input type="text" id="f08_fh_name"/></div>
+              <div class="field"><label>Date</label><input type="date" id="f08_fh_date"/></div>
+            </div>
+          </div>
+        </div></div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="submitFormData('FIN-08','Payment Register','dashboard')">Finalise Register</button>
+          <button class="btn btn-ghost" onclick="saveDraftLocal('f08')">Save Draft</button>
+          <button class="btn btn-ghost" onclick="printForm('f08')">Print</button>
+        </div>
       </div>
 
-            <!-- ═══════════ ALL RECORDS ═══════════ -->
       <div id="page-records" class="hidden" style="display:none">
         <h1 class="page-title">All Records</h1>
         <p class="page-sub">All form submissions visible to your role. Click a record to approve or review.</p>
