@@ -1,7 +1,5 @@
-import { getStore } from "@netlify/blobs";
-
-const SITE_ID = "eadc5ac3-f726-4952-b387-4aee5a4bd418";
-const TOKEN = process.env.NETLIFY_TOKEN || process.env.NETLIFY_AUTH_TOKEN || "nfp_sLFJSWSnjLcsFNqK21eb58FPz4ZU3Bghe508";
+// JCPL Procurement Portal Backend
+// Storage: GitHub API (JSON files in repo)
 
 const CORS = {
   "Access-Control-Allow-Origin": "*",
@@ -9,6 +7,12 @@ const CORS = {
   "Access-Control-Allow-Headers": "Content-Type",
   "Content-Type": "application/json"
 };
+
+// GitHub storage config
+const GH_TOKEN = process.env.GH_TOKEN || "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";
+const GH_REPO = "prithvirajupv/jcpl-portal";
+const GH_BRANCH = "main";
+const DATA_PATH = "data"; // folder in repo for data files
 
 const APPROVAL_RULES = {
   "FIN-01": { 1:["Indenter","Purchase Exec","Director"], 2:["Director","Purchase Manager","Finance Head"], 3:["Stores"], 4:["Director"] },
@@ -40,23 +44,63 @@ const DEFAULT_USERS = [
   {UserID:"U014",Name:"Production Engineer",Email:"production@jcpl.in",Password:"JCPL@PRD2025",Role:"Indenter",Department:"Production Engg.",Active:"YES"},
 ];
 
+// ── GitHub API helpers ─────────────────────────────────────────
+async function ghGet(path) {
+  const r = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${path}?ref=${GH_BRANCH}`, {
+    headers: { Authorization: `token ${GH_TOKEN}`, Accept: "application/vnd.github.v3+json" }
+  });
+  if (r.status === 404) return null;
+  if (!r.ok) throw new Error(`GitHub GET failed: ${r.status}`);
+  const data = await r.json();
+  return { content: JSON.parse(atob(data.content.replace(/\n/g,""))), sha: data.sha };
+}
+
+async function ghSet(path, content, sha) {
+  const body = { message: `Update ${path}`, content: btoa(JSON.stringify(content, null, 2)), branch: GH_BRANCH };
+  if (sha) body.sha = sha;
+  const r = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${path}`, {
+    method: "PUT", headers: { Authorization: `token ${GH_TOKEN}`, Accept: "application/vnd.github.v3+json", "Content-Type": "application/json" },
+    body: JSON.stringify(body)
+  });
+  if (!r.ok) { const e = await r.text(); throw new Error(`GitHub PUT failed: ${r.status} ${e}`); }
+  return await r.json();
+}
+
+async function readDB(name) {
+  const result = await ghGet(`${DATA_PATH}/${name}.json`);
+  return result ? result.content : null;
+}
+
+async function writeDB(name, content) {
+  const existing = await ghGet(`${DATA_PATH}/${name}.json`);
+  await ghSet(`${DATA_PATH}/${name}.json`, content, existing?.sha);
+}
+
+// ── Auth helpers ───────────────────────────────────────────────
 async function sha256(str) {
   const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
   return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,"0")).join("");
 }
 
-function tok() { return crypto.randomUUID().replace(/-/g,"")+Date.now().toString(36); }
+function genToken() { return crypto.randomUUID().replace(/-/g,"")+Date.now().toString(36); }
 function res(data, s=200) { return new Response(JSON.stringify(data),{status:s,headers:CORS}); }
-function S(name) { return getStore({ name, siteID: SITE_ID, token: TOKEN }); }
 
+// ── User management ────────────────────────────────────────────
 async function getUsers() {
-  const s=S("jcpl-users"), u=await s.get("all",{type:"json"});
-  if(!u) {
-    const init=await Promise.all(DEFAULT_USERS.map(async d=>({...d,Password:undefined,PasswordHash:await sha256(d.Password)})));
-    await s.setJSON("all",init); return init;
+  let users = await readDB("users");
+  if (!users) {
+    users = await Promise.all(DEFAULT_USERS.map(async u => ({
+      UserID:u.UserID, Name:u.Name, Email:u.Email,
+      PasswordHash: await sha256(u.Password),
+      Role:u.Role, Department:u.Department, Active:u.Active
+    })));
+    await writeDB("users", users);
   }
-  return u;
+  return users;
 }
+
+// ── Session management (in-memory + GitHub for persistence) ───
+const SESSIONS = {};
 
 async function login(p) {
   const email=(p.get("email")||"").toLowerCase().trim(), pwd=p.get("password")||"";
@@ -64,52 +108,54 @@ async function login(p) {
   if(!user) return {ok:false,error:"User not found"};
   if(await sha256(pwd)!==user.PasswordHash) return {ok:false,error:"Incorrect password"};
   if(user.Active!=="YES") return {ok:false,error:"Account inactive"};
-  const token=tok();
-  await S("jcpl-sessions").setJSON(token,{token,userID:user.UserID,name:user.Name,email:user.Email,role:user.Role,department:user.Department,expires:Date.now()+8*3600000});
+  const token=genToken();
+  const session={token,userID:user.UserID,name:user.Name,email:user.Email,role:user.Role,department:user.Department,expires:Date.now()+8*3600000};
+  SESSIONS[token]=session;
+  // Also save to GitHub for cross-instance persistence
+  try {
+    let sessions=await readDB("sessions")||{};
+    sessions[token]=session;
+    // Clean expired
+    Object.keys(sessions).forEach(k=>{ if(sessions[k].expires<Date.now()) delete sessions[k]; });
+    await writeDB("sessions", sessions);
+  } catch(e) { console.warn("Session save failed:", e.message); }
   return {ok:true,token,name:user.Name,role:user.Role,email:user.Email,userID:user.UserID,approvalRules:APPROVAL_RULES};
 }
 
 async function validateSession(token) {
   if(!token) return null;
-  const s=await S("jcpl-sessions").get(token,{type:"json"});
-  if(!s||s.expires<Date.now()) { if(s) await S("jcpl-sessions").delete(token); return null; }
-  return s;
+  // Check memory first
+  if(SESSIONS[token] && SESSIONS[token].expires>Date.now()) return SESSIONS[token];
+  // Fall back to GitHub
+  try {
+    const sessions=await readDB("sessions")||{};
+    const session=sessions[token];
+    if(!session||session.expires<Date.now()) return null;
+    SESSIONS[token]=session; // cache in memory
+    return session;
+  } catch(e) { return null; }
 }
 
-async function submitForm(p,session) {
+// ── Form operations ────────────────────────────────────────────
+async function submitForm(p, session) {
   const id="REC-"+p.get("formCode")+"-"+Math.random().toString(36).slice(2,10).toUpperCase();
   let data={}; try{data=JSON.parse(p.get("data")||"{}");}catch(e){}
   const title=p.get("formName")||p.get("formCode");
   const rec={id,FormCode:p.get("formCode"),Title:title,Status:"Pending",SubmittedBy:session.name,SubmittedByID:session.userID,SubmittedByRole:session.role,SubmittedAt:new Date().toISOString(),Data:data,Approvals:[],CurrentStep:1};
-  await S("jcpl-forms").setJSON(id,rec);
-  const idx=S("jcpl-index"), index=await idx.get("records",{type:"json"})||[];
+  
+  // Save full record
+  await writeDB(`records/${id}`, rec);
+  
+  // Update index
+  let index=await readDB("index")||[];
   index.unshift({id,FormCode:rec.FormCode,Title:rec.Title,Status:rec.Status,SubmittedBy:rec.SubmittedBy,SubmittedAt:rec.SubmittedAt,CurrentStep:1});
-  await idx.setJSON("records",index);
-  return {ok:true,id,recordId:id};
+  await writeDB("index", index);
+  
+  return {ok:true,id,recordId:id,message:"Saved to GitHub"};
 }
 
-async function approveStep(p,session) {
-  const recordId=p.get("recordId"),stepNum=parseInt(p.get("step")||"0"),decision=p.get("decision")||"Approved",remarks=p.get("remarks")||"";
-  const s=S("jcpl-forms"), rec=await s.get(recordId,{type:"json"});
-  if(!rec) return {ok:false,error:"Record not found"};
-  const allowed=APPROVAL_RULES[rec.FormCode]?.[stepNum];
-  if(!allowed) return {ok:false,error:"Invalid step"};
-  if(!allowed.includes(session.role)) return {ok:false,error:`Access denied. Step ${stepNum} requires: ${allowed.join(", ")}. Your role: ${session.role}`};
-  if(rec.Approvals?.find(a=>a.step===stepNum)) return {ok:false,error:`Step ${stepNum} already approved`};
-  rec.Approvals=[...rec.Approvals||[],{step:stepNum,approvedBy:session.name,approvedByID:session.userID,role:session.role,decision,remarks,timestamp:new Date().toISOString()}];
-  rec.CurrentStep=stepNum+1;
-  if(decision==="Rejected") rec.Status="Rejected";
-  else if(decision==="Hold") rec.Status="On Hold";
-  else { const t=Object.keys(APPROVAL_RULES[rec.FormCode]||{}).length; rec.Status=stepNum>=t?"Approved":"In Progress"; }
-  await s.setJSON(recordId,rec);
-  const idx=S("jcpl-index"), index=await idx.get("records",{type:"json"})||[];
-  const i=index.findIndex(r=>r.id===recordId);
-  if(i>=0){index[i].Status=rec.Status;index[i].CurrentStep=rec.CurrentStep;await idx.setJSON("records",index);}
-  return {ok:true,status:rec.Status,currentStep:rec.CurrentStep};
-}
-
-async function getRecords(p,session) {
-  let records=await S("jcpl-index").get("records",{type:"json"})||[];
+async function getRecords(p, session) {
+  let records=await readDB("index")||[];
   if(!DIRECTOR_ROLES.includes(session.role)) {
     records=records.filter(r=>{
       const rules=APPROVAL_RULES[r.FormCode]||{};
@@ -121,7 +167,7 @@ async function getRecords(p,session) {
 }
 
 async function getDashboard(session) {
-  const all=await S("jcpl-index").get("records",{type:"json"})||[];
+  const all=await readDB("index")||[];
   const myPending=all.filter(r=>{
     if(r.Status!=="Pending"&&r.Status!=="In Progress") return false;
     return (APPROVAL_RULES[r.FormCode]?.[r.CurrentStep||1]||[]).includes(session.role);
@@ -133,24 +179,41 @@ async function getDashboard(session) {
   return {ok:true,total:visible.length,pending:visible.filter(r=>r.Status==="Pending"||r.Status==="In Progress").length,approved:visible.filter(r=>r.Status==="Approved").length,rejected:visible.filter(r=>r.Status==="Rejected"||r.Status==="On Hold").length,myPending:myPending.length,myPendingRecords:myPending.slice(0,10),approvalRules:APPROVAL_RULES};
 }
 
+async function approveStep(p, session) {
+  const recordId=p.get("recordId"),stepNum=parseInt(p.get("step")||"0"),decision=p.get("decision")||"Approved",remarks=p.get("remarks")||"";
+  let rec=await readDB(`records/${recordId}`);
+  if(!rec) return {ok:false,error:"Record not found"};
+  const allowed=APPROVAL_RULES[rec.FormCode]?.[stepNum];
+  if(!allowed) return {ok:false,error:"Invalid step"};
+  if(!allowed.includes(session.role)) return {ok:false,error:`Access denied. Step ${stepNum} requires: ${allowed.join(", ")}. Your role: ${session.role}`};
+  if(rec.Approvals?.find(a=>a.step===stepNum)) return {ok:false,error:`Step ${stepNum} already approved`};
+  rec.Approvals=[...rec.Approvals||[],{step:stepNum,approvedBy:session.name,approvedByID:session.userID,role:session.role,decision,remarks,timestamp:new Date().toISOString()}];
+  rec.CurrentStep=stepNum+1;
+  if(decision==="Rejected") rec.Status="Rejected";
+  else if(decision==="Hold") rec.Status="On Hold";
+  else { const t=Object.keys(APPROVAL_RULES[rec.FormCode]||{}).length; rec.Status=stepNum>=t?"Approved":"In Progress"; }
+  await writeDB(`records/${recordId}`, rec);
+  let index=await readDB("index")||[];
+  const i=index.findIndex(r=>r.id===recordId);
+  if(i>=0){index[i].Status=rec.Status;index[i].CurrentStep=rec.CurrentStep;await writeDB("index",index);}
+  return {ok:true,status:rec.Status,currentStep:rec.CurrentStep};
+}
+
 async function listUsers(session) {
   return {ok:true,users:(await getUsers()).map(u=>({...u,PasswordHash:undefined}))};
 }
 
-async function getAuditLog(session) {
-  if(!DIRECTOR_ROLES.includes(session.role)) return {ok:false,error:"Directors only"};
-  return {ok:true,logs:await S("jcpl-audit").get("logs",{type:"json"})||[]};
-}
-
-async function changePassword(p,session) {
-  const s=S("jcpl-users"), users=await s.get("all",{type:"json"});
+async function changePassword(p, session) {
+  const users=await getUsers();
   const i=users.findIndex(u=>u.UserID===session.userID);
   if(i<0) return {ok:false,error:"User not found"};
   if(await sha256(p.get("oldPassword")||"")!==users[i].PasswordHash) return {ok:false,error:"Current password incorrect"};
   users[i].PasswordHash=await sha256(p.get("newPassword")||"");
-  await s.setJSON("all",users); return {ok:true};
+  await writeDB("users",users);
+  return {ok:true};
 }
 
+// ── Main handler ───────────────────────────────────────────────
 export default async (req) => {
   if(req.method==="OPTIONS") return new Response("",{status:200,headers:CORS});
   try {
@@ -159,15 +222,15 @@ export default async (req) => {
     let result;
 
     if(action==="ping") {
-      result={ok:true,message:"Connected - Netlify Blobs",storage:"Netlify"};
+      result={ok:true,message:"Connected - GitHub Storage",storage:"GitHub"};
     } else if(action==="debug") {
-      const records=await S("jcpl-index").get("records",{type:"json"});
+      const index=await readDB("index");
       const users=await getUsers();
-      result={ok:true,recordCount:records?records.length:0,usersCount:users.length};
+      result={ok:true,recordCount:index?index.length:0,usersCount:users.length};
     } else if(action==="login") {
       result=await login(p);
     } else if(action==="logout") {
-      await S("jcpl-sessions").delete(token); result={ok:true};
+      delete SESSIONS[token]; result={ok:true};
     } else {
       const session=await validateSession(token);
       if(!session) return res({ok:false,error:"Session expired. Please log in again."});
@@ -176,7 +239,6 @@ export default async (req) => {
       else if(action==="getRecords") result=await getRecords(p,session);
       else if(action==="getDashboard") result=await getDashboard(session);
       else if(action==="listUsers") result=await listUsers(session);
-      else if(action==="getAuditLog") result=await getAuditLog(session);
       else if(action==="changePassword") result=await changePassword(p,session);
       else if(action==="whoami") result={ok:true,user:session};
       else result={ok:false,error:"Unknown action: "+action};
