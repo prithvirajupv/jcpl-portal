@@ -43,5 +43,14 @@
     "role": "Director",
     "department": "Management",
     "expires": 1777335764099
+  },
+  "7f043b6df7934d35b7c8220e100f87aamohev3rt": {
+    "token": "7f043b6df7934d35b7c8220e100f87aamohev3rt",
+    "userID": "U002",
+    "name": "Prithvi Raju",
+    "email": "pr@jcpl.in",
+    "role": "Director",
+    "department": "Management",
+    "expires": 1777336077017
   }
 }
