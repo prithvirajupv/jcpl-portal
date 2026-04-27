@@ -166,6 +166,14 @@ async function getRecords(p, session) {
   return {ok:true,records,total:records.length};
 }
 
+async function getRecord(p, session) {
+  const recordId = p.get("recordId");
+  if(!recordId) return {ok:false,error:"recordId required"};
+  const rec = await readDB(`records/${recordId}`);
+  if(!rec) return {ok:false,error:"Record not found"};
+  return {ok:true,record:rec};
+}
+
 async function getDashboard(session) {
   const all=await readDB("index")||[];
   const myPending=all.filter(r=>{
@@ -237,6 +245,7 @@ export default async (req) => {
       if(action==="submitForm") result=await submitForm(p,session);
       else if(action==="approveStep") result=await approveStep(p,session);
       else if(action==="getRecords") result=await getRecords(p,session);
+      else if(action==="getRecord") result=await getRecord(p,session);
       else if(action==="getDashboard") result=await getDashboard(session);
       else if(action==="listUsers") result=await listUsers(session);
       else if(action==="changePassword") result=await changePassword(p,session);
