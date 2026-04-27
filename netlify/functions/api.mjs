@@ -9,7 +9,7 @@ const CORS = {
 };
 
 // GitHub storage config
-const GH_TOKEN = process.env.GH_TOKEN || "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";
+const GH_TOKEN = process.env.GH_TOKEN || "";
 const GH_REPO = "prithvirajupv/jcpl-portal";
 const GH_BRANCH = "main";
 const DATA_PATH = "data"; // folder in repo for data files
