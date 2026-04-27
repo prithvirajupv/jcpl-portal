@@ -1,0 +1,128 @@
+[
+  {
+    "UserID": "U001",
+    "Name": "P. Srinivas Raju",
+    "Email": "psr@jcpl.in",
+    "PasswordHash": "3032e3b1c5c0f828c4003ceb731e2a4407e3bfaf5b46c14b2029a1f134b9bfa8",
+    "Role": "Director",
+    "Department": "Management",
+    "Active": "YES"
+  },
+  {
+    "UserID": "U002",
+    "Name": "Prithvi Raju",
+    "Email": "pr@jcpl.in",
+    "PasswordHash": "aaa088353cc2d477239f90e55ea98e7e873e27df42a6b1e6278071226b5ef758",
+    "Role": "Director",
+    "Department": "Management",
+    "Active": "YES"
+  },
+  {
+    "UserID": "U003",
+    "Name": "Prathap Varma",
+    "Email": "pv@jcpl.in",
+    "PasswordHash": "29459e36ed73798dc7b07de58b9262655387875af90ca59ddd4b6c75a373163a",
+    "Role": "Director",
+    "Department": "Finance",
+    "Active": "YES"
+  },
+  {
+    "UserID": "U004",
+    "Name": "Finance Head",
+    "Email": "cfo@jcpl.in",
+    "PasswordHash": "ce4a9a90a1a1ade5748f3b290fdf8d161e006eb5fbe5a8585952751229964884",
+    "Role": "Finance Head",
+    "Department": "Finance",
+    "Active": "YES"
+  },
+  {
+    "UserID": "U005",
+    "Name": "Purchase Manager",
+    "Email": "purmgr@jcpl.in",
+    "PasswordHash": "211e54c662f3490655eded117f305f546700de6966b335da4b4fcaeb59c8e26f",
+    "Role": "Purchase Manager",
+    "Department": "Purchase",
+    "Active": "YES"
+  },
+  {
+    "UserID": "U006",
+    "Name": "Accounts Manager",
+    "Email": "accounts@jcpl.in",
+    "PasswordHash": "c0d376167a1851c55aea7d0a998db99d187da8489058709a73f68a0dc38ed92c",
+    "Role": "Accounts",
+    "Department": "Finance",
+    "Active": "YES"
+  },
+  {
+    "UserID": "U007",
+    "Name": "Accounts Executive",
+    "Email": "accountsexec@jcpl.in",
+    "PasswordHash": "110bbc6a12e99c9aa7b25065143020412e6656b10ae8b20d47fb0543ff354890",
+    "Role": "Accounts",
+    "Department": "Finance",
+    "Active": "YES"
+  },
+  {
+    "UserID": "U008",
+    "Name": "Purchase Executive",
+    "Email": "purexec@jcpl.in",
+    "PasswordHash": "7b254489f196a19643fb7e9d5eca453e65e6caa9444a0e43a682eefc01205275",
+    "Role": "Purchase Exec",
+    "Department": "Purchase",
+    "Active": "YES"
+  },
+  {
+    "UserID": "U009",
+    "Name": "Store In Charge",
+    "Email": "stores@jcpl.in",
+    "PasswordHash": "e703cf1f9f3f76b17974aed4a76381d17688060ffa99515ed22f79eae83d271e",
+    "Role": "Stores",
+    "Department": "Stores",
+    "Active": "YES"
+  },
+  {
+    "UserID": "U010",
+    "Name": "QC Officer",
+    "Email": "qc@jcpl.in",
+    "PasswordHash": "61d4e254d3f1368a7bbf4ad0db4fc47d15d1c734b4801dc7d666f5680d54c86c",
+    "Role": "QC Officer",
+    "Department": "Quality",
+    "Active": "YES"
+  },
+  {
+    "UserID": "U011",
+    "Name": "Hardware Engineer",
+    "Email": "hardware@jcpl.in",
+    "PasswordHash": "dfdcb8e568060dacc677c883bce44ee2227ece746e7cd58f34ea82aca8599f82",
+    "Role": "Indenter",
+    "Department": "Hardware Engg.",
+    "Active": "YES"
+  },
+  {
+    "UserID": "U012",
+    "Name": "Software Engineer",
+    "Email": "software@jcpl.in",
+    "PasswordHash": "3869eb47acd40e402b4c65295146bd349007d7f263df0347dbcc572b36a583a5",
+    "Role": "Indenter",
+    "Department": "Software Engg.",
+    "Active": "YES"
+  },
+  {
+    "UserID": "U013",
+    "Name": "Mechanical Engineer",
+    "Email": "mechanical@jcpl.in",
+    "PasswordHash": "64d68ed8465059a3c456669e0c27934d3e9dc393f8dd31b5006e553b50ec45d5",
+    "Role": "Indenter",
+    "Department": "Mechanical Engg.",
+    "Active": "YES"
+  },
+  {
+    "UserID": "U014",
+    "Name": "Production Engineer",
+    "Email": "production@jcpl.in",
+    "PasswordHash": "9aefbfe0b2fe56a30c757edc5f1fd8294d626bd53872c88d019371c197a77c19",
+    "Role": "Indenter",
+    "Department": "Production Engg.",
+    "Active": "YES"
+  }
+]
