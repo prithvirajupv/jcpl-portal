@@ -55,8 +55,10 @@ async function ghGet(path) {
   return { content: JSON.parse(atob(data.content.replace(/\n/g,""))), sha: data.sha };
 }
 
-async function ghSet(path, content, sha) {
-  const body = { message: `Update ${path}`, content: btoa(JSON.stringify(content, null, 2)), branch: GH_BRANCH };
+async function ghSet(path, content, sha, rawBase64, mimeType) {
+  // If rawBase64 provided, use it directly; otherwise JSON encode content
+  const fileContent = rawBase64 || btoa(JSON.stringify(content, null, 2));
+  const body = { message: `Update ${path}`, content: fileContent, branch: GH_BRANCH };
   if (sha) body.sha = sha;
   const r = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${path}`, {
     method: "PUT", headers: { Authorization: `token ${GH_TOKEN}`, Accept: "application/vnd.github.v3+json", "Content-Type": "application/json" },
@@ -222,6 +224,58 @@ async function changePassword(p, session) {
 }
 
 // ── Main handler ───────────────────────────────────────────────
+
+async function uploadAttachment(p, session) {
+  const recordId = p.get("recordId");
+  let uploads = [];
+  try { uploads = JSON.parse(p.get("uploads") || "[]"); } catch(e) {}
+  if(!uploads.length) return { ok: false, error: "No files provided" };
+
+  // Get existing record
+  const rec = await readDB(`records/${recordId}`);
+  if(!rec) return { ok: false, error: "Record not found" };
+
+  if(!rec.Attachments) rec.Attachments = [];
+  const newAttachments = [];
+
+  for(const file of uploads) {
+    try {
+      // Upload to GitHub as binary in data/attachments/ folder
+      const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+      const path = `data/attachments/${recordId}/${Date.now()}_${safeName}`;
+      const url = `https://github.com/prithvirajupv/jcpl-portal/blob/main/${path}`;
+      const rawUrl = `https://raw.githubusercontent.com/prithvirajupv/jcpl-portal/main/${path}`;
+
+      // Save file to GitHub
+      await ghSet(path, null, null, file.data, file.type);
+
+      const att = {
+        name: file.name,
+        path,
+        url: `https://github.com/prithvirajupv/jcpl-portal/blob/main/${path}`,
+        rawUrl,
+        type: file.type,
+        size: file.size,
+        uploadedBy: session.name,
+        uploadedAt: new Date().toISOString()
+      };
+      rec.Attachments.push(att);
+      newAttachments.push(att);
+    } catch(e) {
+      console.warn("Failed to upload", file.name, e.message);
+    }
+  }
+
+  await writeDB(`records/${recordId}`, rec);
+
+  // Update index
+  const index = await readDB("index") || [];
+  const i = index.findIndex(r => r.id === recordId);
+  if(i >= 0) { index[i].attachmentCount = rec.Attachments.length; await writeDB("index", index); }
+
+  return { ok: true, attachments: rec.Attachments, uploaded: newAttachments.length };
+}
+
 export default async (req) => {
   if(req.method==="OPTIONS") return new Response("",{status:200,headers:CORS});
   try {
@@ -246,6 +300,7 @@ export default async (req) => {
       else if(action==="approveStep") result=await approveStep(p,session);
       else if(action==="getRecords") result=await getRecords(p,session);
       else if(action==="getRecord") result=await getRecord(p,session);
+      else if(action==="uploadAttachment") result=await uploadAttachment(p,session);
       else if(action==="getDashboard") result=await getDashboard(session);
       else if(action==="listUsers") result=await listUsers(session);
       else if(action==="changePassword") result=await changePassword(p,session);
