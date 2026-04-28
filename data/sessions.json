@@ -43,5 +43,14 @@
     "role": "Director",
     "department": "Management",
     "expires": 1777385276407
+  },
+  "94d2ab1f70624f6e8e27cb8660db91abmoid09i2": {
+    "token": "94d2ab1f70624f6e8e27cb8660db91abmoid09i2",
+    "userID": "U001",
+    "name": "P. Srinivas Raju",
+    "email": "psr@jcpl.in",
+    "role": "Director",
+    "department": "Management",
+    "expires": 1777393424666
   }
 }
