@@ -1,65 +1,11 @@
 {
-  "97aa730f2c80430cac737467acb21c3cmoi4y72z": {
-    "token": "97aa730f2c80430cac737467acb21c3cmoi4y72z",
-    "userID": "U001",
-    "name": "P. Srinivas Raju",
-    "email": "psr@jcpl.in",
-    "role": "Director",
-    "department": "Management",
-    "expires": 1777379891291
-  },
-  "d36eb6cac04a43c2bcaa4750a05d9ae1moi5ux66": {
-    "token": "d36eb6cac04a43c2bcaa4750a05d9ae1moi5ux66",
-    "userID": "U001",
-    "name": "P. Srinivas Raju",
-    "email": "psr@jcpl.in",
-    "role": "Director",
-    "department": "Management",
-    "expires": 1777381418095
-  },
-  "1914c07c17494ec19e0fa2849caac2e2moi653vf": {
-    "token": "1914c07c17494ec19e0fa2849caac2e2moi653vf",
-    "userID": "U001",
-    "name": "P. Srinivas Raju",
-    "email": "psr@jcpl.in",
-    "role": "Director",
-    "department": "Management",
-    "expires": 1777381893340
-  },
-  "f42a492f25d747d1a6c0ebd1fe594fffmoi7oc0o": {
-    "token": "f42a492f25d747d1a6c0ebd1fe594fffmoi7oc0o",
-    "userID": "U001",
-    "name": "P. Srinivas Raju",
-    "email": "psr@jcpl.in",
-    "role": "Director",
-    "department": "Management",
-    "expires": 1777384469976
-  },
-  "783413db6f054c9fb6857330a8903cabmoi85m9j": {
-    "token": "783413db6f054c9fb6857330a8903cabmoi85m9j",
-    "userID": "U001",
-    "name": "P. Srinivas Raju",
-    "email": "psr@jcpl.in",
-    "role": "Director",
-    "department": "Management",
-    "expires": 1777385276407
-  },
-  "94d2ab1f70624f6e8e27cb8660db91abmoid09i2": {
-    "token": "94d2ab1f70624f6e8e27cb8660db91abmoid09i2",
-    "userID": "U001",
-    "name": "P. Srinivas Raju",
-    "email": "psr@jcpl.in",
-    "role": "Director",
-    "department": "Management",
-    "expires": 1777393424666
-  },
-  "cd9231136323459e9679292299d280afmoiga96g": {
-    "token": "cd9231136323459e9679292299d280afmoiga96g",
-    "userID": "U001",
-    "name": "P. Srinivas Raju",
-    "email": "psr@jcpl.in",
-    "role": "Director",
-    "department": "Management",
-    "expires": 1777398929657
+  "2ab384205cbc475da8163f10cf4385d1mojktvm0": {
+    "token": "2ab384205cbc475da8163f10cf4385d1mojktvm0",
+    "userID": "U005",
+    "name": "Purchase Manager",
+    "email": "purmgr@jcpl.in",
+    "role": "Purchase Manager",
+    "department": "Purchase",
+    "expires": 1777467029832
   }
 }
