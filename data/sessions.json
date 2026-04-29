@@ -7,5 +7,14 @@
     "role": "Purchase Manager",
     "department": "Purchase",
     "expires": 1777467029832
+  },
+  "0f8419e7963d4ecf9a176768a8c02512mojmoufs": {
+    "token": "0f8419e7963d4ecf9a176768a8c02512mojmoufs",
+    "userID": "U002",
+    "name": "Prithvi Raju",
+    "email": "pr@jcpl.in",
+    "role": "Director",
+    "department": "Management",
+    "expires": 1777470154281
   }
 }
